@@ -5,12 +5,14 @@ import { compose } from 'recompose';
 import {withFirebase} from "../../components/Firebase";
 import * as ROUTES from '../../constants/routes';
 import SignInWithGoogle from "../../elements/GoogleLogIn";
+import {PassForgetLink} from "../PassForget";
 
 const LogInPage = () => (
     <div>
         <h1>Strona Logowania</h1>
         <LogInForm/>
         <SignInWithGoogle/>
+        <PassForgetLink/>
         <SignUpLink/>
     </div>
 );

@@ -16,16 +16,39 @@ const INITIAL_STATE = {
     error: null,
 }
 
-const PassForgetForm = (props) => {
+const PassForgetFormBase = (props) => {
     const [mail, setMail] = useState({...INITIAL_STATE});
 
-    const onSubmit = event => {
+    const { email, error } = mail;
 
+    const onSubmit = event => {
+        props.firebase
+            .doPasswordReset(email)
+            .then(()=> {
+                setMail({...INITIAL_STATE});
+            })
+            .catch(error => {
+                setMail(prevState => {
+                    return {
+                        ...prevState,
+                        error: error,
+                    }
+                })
+            })
+        event.preventDefault();
     }
 
     const onChange = event => {
-
+        const { name, value } = event.target;
+        setMail(prevState => {
+            return {
+                ...prevState,
+                [name]: value
+            }
+        })
     }
+
+    const isInvalid = email === '';
 
     return (
         <form onSubmit={onSubmit}>
@@ -40,15 +63,21 @@ const PassForgetForm = (props) => {
                 Zresetuj moje hasło
             </button>
 
-
+            {error && <p>{error.message}</p>}
         </form>
 
-    )
-
-
+    );
 
 }
 
+const PassForgetLink = () => (
+    <p>
+        <Link to={ROUTES.PASS_FORGET}>Zapomniałem hasła</Link>
+    </p>
+);
+
+const PassForgetForm = withFirebase(PassForgetFormBase);
 
 export default PassForgetPage;
 
+export { PassForgetForm, PassForgetLink };
