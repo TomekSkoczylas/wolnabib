@@ -6,7 +6,7 @@ const MainPage = () => (
         <LogOutButton/>
         <h1>Strona Główna</h1>
     </div>
-);
+)
 
 export default MainPage;
 
