@@ -4,7 +4,7 @@ import { SignUpLink } from '../SignUp';
 import { compose } from 'recompose';
 import {withFirebase} from "../../components/Firebase";
 import * as ROUTES from '../../constants/routes';
-import SignInWithGoogle from "../../elements/GoogleLogIn";
+import SignInWithGoogle from "../../fragments/GoogleLogIn";
 import {PassForgetLink} from "../PassForget";
 
 const LogInPage = () => (

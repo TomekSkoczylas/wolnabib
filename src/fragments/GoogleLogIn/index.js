@@ -14,7 +14,6 @@ const SignInWithGoogleBase = (props) => {
         props.firebase
             .doSignInWithGoogle()
             .then(socialAuthUser => {
-                console.log(socialAuthUser);
                 return props.firebase
                     .user(socialAuthUser.user.uid)
                     .set({
