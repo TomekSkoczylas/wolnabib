@@ -1,5 +1,7 @@
 import React from "react";
-import LogOutButton from "../../elements/LogOut";
+import LogOutButton from "../../fragments/LogOut";
+
+import { withAuthorization } from '../../components/Session';
 
 const MainPage = () => (
     <div>
@@ -8,5 +10,7 @@ const MainPage = () => (
     </div>
 )
 
-export default MainPage;
+const condition = authUser => !!authUser;
+
+export default  withAuthorization(condition)(MainPage);
 
