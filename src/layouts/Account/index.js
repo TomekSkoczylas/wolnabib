@@ -1,15 +1,22 @@
 import React from "react";
 import LogOutButton from "../../fragments/LogOut";
 import PassChangeForm from "../../fragments/PassChange";
-import { withAuthorization } from '../../components/Session';
+import {AuthUserContext, withAuthorization} from '../../components/Session';
 
 
 const AccountPage = () => (
-    <div>
-        <LogOutButton/>
-        <h1>Twoje Konto</h1>
-        <PassChangeForm/>
-    </div>
+    <AuthUserContext.Consumer>
+        {authUser => (
+            <div>
+                <LogOutButton/>
+                <h1>Twoje konto Konto</h1>
+                <p>Imię {authUser.displayName}</p>
+                <p>Email {authUser.email}</p>
+                <PassChangeForm/>
+            </div>
+        )}
+    </AuthUserContext.Consumer>
+
 );
 
 const condition = authUser => !!authUser;
