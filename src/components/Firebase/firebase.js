@@ -39,6 +39,8 @@ class Firebase {
     doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password);
 
+    doUpdateProfile = (data) => this.auth.currentUser.updateProfile(data);
+
     // *** User API ***
 
     user = uid => this.db.ref(`users/${uid}`);

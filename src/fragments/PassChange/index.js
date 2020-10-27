@@ -18,7 +18,20 @@ const PassChangeForm = (props) => {
     } = password;
 
     const onSubmit = event => {
-
+        props.firebase
+            .doPasswordUpdate(passwordOne)
+            .then(()=> {
+                setPassword({...INITIAL_STATE});
+            })
+            .catch(error => {
+                setPassword(prevState => {
+                    return {
+                        ...prevState,
+                        error: error,
+                    }
+                })
+            })
+        event.preventDefault();
     }
 
     const onChange = event => {
