@@ -37,6 +37,15 @@ const SingUpFormBase = (props) => {
         props.firebase
             .doCreateUserWithEmailAndPassword(email,  passwordOne)
             .then(authUser => {
+                return props.firebase
+                    .user(authUser.user.uid)
+                    .set({
+                        username,
+                        email,
+                        roles: {},
+                    });
+            } )
+            .then(()=> {
                 setSignee({...INITIAL_STATE});
                 props.history.push(ROUTES.MAIN);
             })
