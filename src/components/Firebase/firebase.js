@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBlFEBqsiwqRNzXUxcg65Osyg5bEX4rMUY",
@@ -16,9 +17,12 @@ class Firebase {
         app.initializeApp(firebaseConfig);
 
         this.auth = app.auth();
+        this.db = app.database();
 
         this.googleProvider = new app.auth.GoogleAuthProvider();
     }
+
+    // ***Auth API ***
 
     doCreateUserWithEmailAndPassword = (email, password) =>
         this.auth.createUserWithEmailAndPassword(email, password);
@@ -35,7 +39,7 @@ class Firebase {
     doPasswordUpdate = password =>
         this.auth.currentUser.updatePassword(password);
 
-    // Users ref
+    // *** User API ***
 
     user = uid => this.db.ref(`users/${uid}`);
 
