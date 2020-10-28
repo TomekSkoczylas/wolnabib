@@ -2,6 +2,7 @@ import React from "react";
 import LogOutButton from "../../fragments/LogOut";
 import PassChangeForm from "../../fragments/PassChange";
 import {AuthUserContext, withAuthorization} from '../../components/Session';
+import NameAddForm from "../../fragments/NameChange";
 
 
 const AccountPage = () => (
@@ -9,10 +10,11 @@ const AccountPage = () => (
         {authUser => (
             <div>
                 <LogOutButton/>
-                <h1>Twoje konto Konto</h1>
+                <h1>Twoje Konto</h1>
                 <p>Imię {authUser.displayName}</p>
                 <p>Email {authUser.email}</p>
                 <PassChangeForm/>
+                <NameAddForm/>
             </div>
         )}
     </AuthUserContext.Consumer>
