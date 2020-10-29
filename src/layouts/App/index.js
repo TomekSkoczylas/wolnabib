@@ -8,6 +8,7 @@ import PassForgetPage from "../PassForget";
 import SignUpPage from "../SignUp";
 import * as ROUTES from '../../constants/routes';
 import {withAuthentication} from '../../components/Session';
+import Admin from "../Admin";
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
                 <Route path={ROUTES.MAIN} component={MainPage}/>
                 <Route path={ROUTES.PASS_FORGET} component={PassForgetPage}/>
                 <Route path={ROUTES.SIGNUP} component={SignUpPage}/>
+                <Route path={ROUTES.ADMIN} component={Admin}/>
             </div>
         </Router>
     )
