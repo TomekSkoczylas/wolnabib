@@ -1,25 +1,28 @@
 import React from "react";
-
+import { Switch, Route } from 'react-router-dom';
 
 import { withAuthorization } from '../../components/Session';
+import * as ROUTES from '../../constants/routes';
+
 import LogOutButton from "../../fragments/LogOut";
 import SearchEngine from "../../fragments/SearchEngine";
+import BookDetail from '../../fragments/BookDetail';
 
-const MainPage = props => {
+
+
+const MainPage = () => {
     return (
     <div>
         <LogOutButton/>
         <h1>Strona Główna</h1>
-        <SearchEngine/>
+        <Switch>
+            <Route exact path={ROUTES.MAIN} component={SearchEngine}/>
+            <Route exact path={ROUTES.MAIN_DETAIL} component={BookDetail} />
+        </Switch>
     </div>
-    )
-};
-
-
+    );
+}
 
 const condition = authUser => !!authUser;
 
-
-
 export default withAuthorization(condition)(MainPage);
-

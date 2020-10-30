@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 
 import { withFirebase } from "../../components/Firebase";
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
+
 
 const SearchEngine = props => {
     const [criterion, setCriterion] = useState("title");
@@ -18,6 +21,11 @@ const SearchEngine = props => {
         serSearchWord(e.target.value);
     }
 
+
+    // searchInputToLower = inputText.getText().toString().toLowerCase();
+    //
+    // searchInputTOUpper = inputText.getText().toString().toUpperCase();
+
     const onSubmit = e => {
         if (searchWord) {
             props.firebase.books()
@@ -28,7 +36,7 @@ const SearchEngine = props => {
                 .once('value')
                 .then(snap => {
                     const snapObject = snap.val()
-                    console.log(snapObject);
+                    // console.log(snapObject);
                     const snapList = Object.keys(snapObject).map(key => ({
                             ...snapObject[key],
                             book_id: key,
@@ -41,6 +49,7 @@ const SearchEngine = props => {
                     setError(error);
                 });
         } else {
+            // *** w przypadku braku hasła wyszukiwania pokazuje pierwsze 10 książek z listy *** 
             props.firebase.books()
                 .limitToFirst(10)
                 .once('value')
@@ -84,11 +93,27 @@ const SearchEngine = props => {
                     (error.message === "Cannot convert undefined or null to object") ? "Sorry, nic nie znaleziono" : error.message
                 } </p>}
             </form>
+            <h2>Wyniki</h2>
             {loading && <p>Ładujemy dane...</p>}
+            <ul>
+                {bookList.map(book => (
+                    <li key={book.book_id}>
+                        <span><strong>Tytuł: {book.title} </strong></span><br/>
+                        <span>Autor: {book.author_firstname} {book.author_surname}</span><br/>
+                        <span>Kategoria: {book.category}</span>
+                        <span>Wydanie: {book.editor}, {book.edition_year}</span>
+                        <span>
+                            <Link to={`${ROUTES.MAIN}/${book.book_id}`}
+                            ><span>{book.title}</span>
+                            </Link>
+                        </span>
+                    </li>
+                ))}
+                </ul>
 
         </div>
     )
-
-}
+}               
+    
 
 export default withFirebase(SearchEngine);
