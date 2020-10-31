@@ -12,6 +12,7 @@ const AccountPage = () => (
                 <LogOutButton/>
                 <h1>Twoje Konto</h1>
                 <p>Imię {authUser.displayName}</p>
+                <p>Drugie imie: {authUser.username}</p>
                 <p>Email {authUser.email}</p>
                 <PassChangeForm/>
                 <NameAddForm/>

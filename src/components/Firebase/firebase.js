@@ -58,10 +58,12 @@ class Firebase {
     onAuthUserListener = (next, fallback) => 
         this.auth.onAuthStateChanged(authUser => {
             if(authUser) {
-                this.user(authUser.id)
+                this.user(authUser.uid)
                 .once('value')
                 .then(snap => {
+                    
                     const dbUser = snap.val();
+                    
 
                     if(!dbUser.roles) {
                         dbUser.roles = {};
@@ -75,6 +77,7 @@ class Firebase {
                         ...dbUser,
                     };
 
+                    
                     next(authUser);
                 });
             } else {

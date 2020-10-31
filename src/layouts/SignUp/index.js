@@ -37,7 +37,6 @@ const SingUpFormBase = (props) => {
         props.firebase
             .doCreateUserWithEmailAndPassword(email,  passwordOne)
             .then(authUser => {
-                props.firebase.doUpdateProfile({displayName: username});
                 return props.firebase
                     .user(authUser.user.uid)
                     .set({
