@@ -53,6 +53,38 @@ class Firebase {
 
     books = () => this.db.ref(`books`);
 
+    // *** Merge Auth and DB User API *** //
+
+    onAuthUserListener = (next, fallback) => 
+        this.auth.onAuthStateChanged(authUser => {
+            if(authUser) {
+                this.user(authUser.id)
+                .once('value')
+                .then(snap => {
+                    const dbUser = snap.val();
+
+                    if(!dbUser.roles) {
+                        dbUser.roles = {};
+                    }
+
+                    // merging users
+                    
+                    authUser = {
+                        uid: authUser.id,
+                        email: authUser.email,
+                        ...dbUser,
+                    };
+
+                    next(authUser);
+                });
+            } else {
+                fallback();
+            }     
+    });
+
+    
+    
+
 }
 
 export default Firebase;
