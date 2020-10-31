@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { withFirebase } from "../../functions/Firebase";
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
+import ReviewAdd from '../../components/ReviewAdd';
+import ReviewSection from '../../components/PassChange';
 
 const BookDetail = (props) => {
     const [book, setBook] = useState({});
@@ -31,7 +31,6 @@ const BookDetail = (props) => {
 
     return (
         <div>
-            <Link to={ROUTES.MAIN}>Powrót</Link>
             {loading && <div>Loading...</div>}
             {book && (
             <div>
@@ -41,6 +40,8 @@ const BookDetail = (props) => {
                 <span>Edycja: {book.editor}, {book.edition_year}</span>
             </div>
             )}
+            <ReviewAdd/>
+            <ReviewSection/>
         </div>
     );
 };
