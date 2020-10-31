@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import { withAuthorization } from '../../components/Session';
 import * as ROUTES from '../../constants/routes';
 
-import LogOutButton from "../../fragments/LogOut";
 import SearchEngine from "../../fragments/SearchEngine";
 import BookDetail from '../../fragments/BookDetail';
 
@@ -13,7 +12,6 @@ import BookDetail from '../../fragments/BookDetail';
 const MainPage = () => {
     return (
     <div>
-        <LogOutButton/>
         <h1>Strona Główna</h1>
         <Switch>
             <Route exact path={ROUTES.MAIN} component={SearchEngine}/>

@@ -47,6 +47,8 @@ const PassChangeForm = (props) => {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return (
+        <div>
+        <h3>Zmiana hasła</h3>
         <form onSubmit={onSubmit}>
             <input
                 name="passwordOne"
@@ -63,10 +65,11 @@ const PassChangeForm = (props) => {
                 placeholder="Potwierdź nowe hasło"
             />
             <button disabled={isInvalid} type="submit">
-                Reset My Password
+                Zmień moje hasło
             </button>
             {error && <p>{error.message}</p>}
         </form>
+        </div>
     );
 }
 

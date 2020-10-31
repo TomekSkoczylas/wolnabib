@@ -46,20 +46,23 @@ const NameAddForm = (props) => {
     let isInvalid = displayName === '';
 
     return (
+        <div>
+            <h3>Zmiana imienia</h3>
         <form onSubmit={onSubmit}>
             <input
                 name="displayName"
                 value={displayName}
                 onChange={onChange}
                 type="text"
-                placeholder="imię"
+                placeholder="Nowe imię"
             />
             <button disabled={isInvalid} type="submit">
-                Reset My Password
+                Zmień moje imię 
             </button>
 
             {error && <p>{error.message}</p>}
         </form>
+        </div>
     );
 }
 

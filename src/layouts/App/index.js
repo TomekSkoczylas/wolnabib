@@ -9,11 +9,12 @@ import SignUpPage from "../SignUp";
 import * as ROUTES from '../../constants/routes';
 import {withAuthentication} from '../../components/Session';
 import Admin from "../Admin";
-
+import Navigation from '../../fragments/Navigation';
 
 const App = () => (
         <Router>
             <div>
+                <Navigation/>
                 <Route exact path={ROUTES.LOGIN} component={LogInPage}/>
                 <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
                 <Route path={ROUTES.MAIN} component={MainPage}/>
