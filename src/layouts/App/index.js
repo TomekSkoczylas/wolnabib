@@ -22,7 +22,7 @@ const App = () => (
                 <Route path={ROUTES.ADMIN} component={Admin}/>
             </div>
         </Router>
-    )
+    );
 
 
 export default withAuthentication(App);
