@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { withFirebase } from "../../functions/Firebase";
+import {AuthUserContext} from '../../functions/Session';
 import ReviewAdd from '../../components/ReviewAdd';
 import ReviewSection from '../../components/ReviewSection';
 
@@ -30,19 +31,23 @@ const BookDetail = (props) => {
     // console.log(book);
 
     return (
-        <div>
-            {loading && <div>Loading...</div>}
-            {book && (
+        <AuthUserContext.Consumer>
+            {authUser => (
             <div>
-                <h2>{book.title}</h2>
-                <span><strong>Autor: {book.author_firstname} {book.author_surname}</strong></span><br/> 
-                <span>Kategoria: {book.category}</span><br/>
-                <span>Edycja: {book.editor}, {book.edition_year}</span>
+                {loading && <div>Loading...</div>}
+                {book && (
+                <div>
+                    <h2>{book.title}</h2>
+                    <span><strong>Autor: {book.author_firstname} {book.author_surname}</strong></span><br/> 
+                    <span>Kategoria: {book.category}</span><br/>
+                    <span>Edycja: {book.editor}, {book.edition_year}</span>
+                </div>
+                )}
+                <ReviewAdd bookId={props.match.params.id} authUser={authUser}/>
+                <ReviewSection bookId={props.match.params.id} authUser={authUser}/>
             </div>
             )}
-            <ReviewAdd bookId={props.match.params.id}/>
-            <ReviewSection bookId={props.match.params.id}/>
-        </div>
+        </AuthUserContext.Consumer>
     );
 };
 
