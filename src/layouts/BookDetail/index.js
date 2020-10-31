@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { withFirebase } from "../../functions/Firebase";
 import ReviewAdd from '../../components/ReviewAdd';
-import ReviewSection from '../../components/PassChange';
+import ReviewSection from '../../components/ReviewSection';
 
 const BookDetail = (props) => {
     const [book, setBook] = useState({});
@@ -10,7 +10,7 @@ const BookDetail = (props) => {
     useEffect(()=> {
            setLoading(true);
 
-           console.log(props.match.params.id)
+        //    console.log(props.match.params.id)
 
            props.firebase
             .book(props.match.params.id)
@@ -27,7 +27,7 @@ const BookDetail = (props) => {
 
     }, [props.firebase, props.match.params]);
 
-    console.log(book);
+    // console.log(book);
 
     return (
         <div>
@@ -40,8 +40,8 @@ const BookDetail = (props) => {
                 <span>Edycja: {book.editor}, {book.edition_year}</span>
             </div>
             )}
-            <ReviewAdd/>
-            <ReviewSection/>
+            <ReviewAdd bookId={props.match.params.id}/>
+            <ReviewSection bookId={props.match.params.id}/>
         </div>
     );
 };
