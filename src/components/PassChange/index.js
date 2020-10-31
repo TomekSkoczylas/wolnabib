@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import { withFirebase } from "../../components/Firebase";
+import { withFirebase } from "../../functions/Firebase";
 
 const INITIAL_STATE = {
     passwordOne: '',

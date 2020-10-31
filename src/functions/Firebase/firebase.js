@@ -72,7 +72,7 @@ class Firebase {
                     // merging users
                     
                     authUser = {
-                        uid: authUser.id,
+                        uid: authUser.uid,
                         email: authUser.email,
                         ...dbUser,
                     };

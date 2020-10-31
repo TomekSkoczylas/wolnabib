@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { compose } from "recompose";
 
 
-import { withFirebase } from "../../components/Firebase";
+import { withFirebase } from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
 
 const INITIAL_STATE = {

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import { withFirebase } from "../../components/Firebase";
+import { withFirebase } from "../../functions/Firebase";
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 

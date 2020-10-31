@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { AuthUserContext } from '../../components/Session'
+import { AuthUserContext } from '../../functions/Session'
 import LogOutButton from '../LogOut';
 import * as ROUTES from '../../constants/routes';
 

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
-import { withFirebase } from "../../components/Firebase";
+import { withFirebase } from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
 
 const PassForgetPage = () => (

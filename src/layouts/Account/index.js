@@ -1,7 +1,7 @@
 import React from "react";
-import PassChangeForm from "../../fragments/PassChange";
-import {AuthUserContext, withAuthorization} from '../../components/Session';
-import NameAddForm from "../../fragments/NameChange";
+import PassChangeForm from "../../components/PassChange";
+import {AuthUserContext, withAuthorization} from '../../functions/Session';
+import NameAddForm from "../../components/NameChange";
 
 
 const AccountPage = () => (

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { withRouter } from 'react-router-dom';
 import { SignUpLink } from '../SignUp';
 import { compose } from 'recompose';
-import {withFirebase} from "../../components/Firebase";
+import {withFirebase} from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
-import SignInWithGoogle from "../../fragments/GoogleLogIn";
+import SignInWithGoogle from "../../components/GoogleLogIn";
 import {PassForgetLink} from "../PassForget";
 
 const LogInPage = () => (

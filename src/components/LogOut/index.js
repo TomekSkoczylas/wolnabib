@@ -1,6 +1,6 @@
 import React from "react";
 
-import { withFirebase } from "../../components/Firebase";
+import { withFirebase } from "../../functions/Firebase";
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 

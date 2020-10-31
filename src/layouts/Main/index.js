@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
 
-import { withAuthorization } from '../../components/Session';
+import { withAuthorization } from '../../functions/Session';
 import * as ROUTES from '../../constants/routes';
 
-import SearchEngine from "../../fragments/SearchEngine";
-import BookDetail from '../../fragments/BookDetail';
+import SearchEngine from "../../components/SearchEngine";
+import BookDetail from '../BookDetail';
 
 
 

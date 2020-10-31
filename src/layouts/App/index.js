@@ -7,9 +7,9 @@ import MainPage from "../Main";
 import PassForgetPage from "../PassForget";
 import SignUpPage from "../SignUp";
 import * as ROUTES from '../../constants/routes';
-import {withAuthentication} from '../../components/Session';
+import {withAuthentication} from '../../functions/Session';
 import Admin from "../Admin";
-import Navigation from '../../fragments/Navigation';
+import Navigation from '../../components/Navigation';
 
 const App = () => (
         <Router>
