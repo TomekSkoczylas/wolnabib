@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import {withFirebase} from "../../functions/Firebase";
 
 
-
-
 const ReviewAdd = (props) => {
     const [review, setReview] = useState({
                 author: props.authUser.username,
