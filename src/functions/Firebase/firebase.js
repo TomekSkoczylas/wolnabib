@@ -53,6 +53,10 @@ class Firebase {
 
     books = () => this.db.ref(`books`);
 
+    // *** Activity API ***
+
+    archive = () => this.db.ref('archive');
+
     // *** Merge Auth and DB User API *** //
 
     onAuthUserListener = (next, fallback) => 
