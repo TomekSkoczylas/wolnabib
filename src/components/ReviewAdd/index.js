@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {withFirebase} from "../../functions/Firebase";
-
+import StarRatingComponent from 'react-star-rating-controlled-component';
 
 const ReviewAdd = (props) => {
     const [review, setReview] = useState({
@@ -11,7 +11,6 @@ const ReviewAdd = (props) => {
     const [error, setError] = useState(null);
 
     const {
-        author,
         rating,
         text,
     } = review;
@@ -30,14 +29,17 @@ const ReviewAdd = (props) => {
                 props.firebase //dodaje recenzje do Archiwum
                 .archive()
                 .push(data);
-            })
-            .then(()=> { 
+
                 setReview({
                     author: props.authUser.username,
                     rating: 0,
                     text: '',
                 });
+                console.log(review.rating);
             })
+            // .then(()=> { 
+                
+            // })
             .catch(error => {
                 setError(error);
             }) 
@@ -53,14 +55,32 @@ const ReviewAdd = (props) => {
             ...prevState,
             [name]: value,
         }));
-    }
+    };
 
-    const isInvalid = text === '';
+    const onRatingChange = (rate) => {
+        setReview(prevState => ({
+            ...prevState,
+            rating: rate,
+        }));
+    };
+
+
+    const isInvalid = text === '' || rating === 0;
 
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <h2>Twoja recenzja</h2>
+                <div style={{fontSize: 36 }}>
+                <StarRatingComponent
+                    name="rating"
+                    value={rating}
+                    starCount={6}
+                    onStarClick={onRatingChange}
+                    starColor={'red'}
+                    emptyStarColor={'black'}
+                />
+                </div>
                     <textarea
                         name="text" 
                         value={text} 

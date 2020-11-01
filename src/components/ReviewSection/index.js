@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {withFirebase} from "../../functions/Firebase";
-
+import StarRatingComponent from 'react-star-rating-controlled-component';
 
 const ReviewSection = (props) => {
     const [reviews, setReviews] = useState([]);
@@ -48,7 +48,14 @@ const ReviewSection = (props) => {
                 {reviews.map(rev => (
                     <li key={rev.authId}>
                         <span>Autor: {rev.author} </span>
-                        <span>Ocena: {rev.rating} </span>
+                        <StarRatingComponent
+                            name="rating"
+                            value={rev.rating}
+                            starCount={6}
+                            editing={false}
+                            starColor={'red'}
+                            emptyStarColor={'white'}
+                        />
                         { props.authUser.uid === rev.authId ? <button onClick={onDelete}>Usuń</button> : null}
                         <p>{rev.text}</p>
                     </li>
