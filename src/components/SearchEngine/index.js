@@ -22,12 +22,12 @@ const SearchEngine = props => {
     }
 
 
-    // searchInputToLower = inputText.getText().toString().toLowerCase();
-    //
-    // searchInputTOUpper = inputText.getText().toString().toUpperCase();
-
     const onSubmit = e => {
+        setError(null);
+        setBookList([]);
         if (searchWord) {
+            // const searchWordToLower = searchWord.toLowerCase();
+            // const searchWordToUpper = searchWord.toUpperCase();
             props.firebase.books()
                 .orderByChild(`${criterion}`)
                 .startAt(`${searchWord}`)
