@@ -5,6 +5,7 @@ import {withFirebase} from "../../functions/Firebase";
 const ReviewSection = (props) => {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
 
     useEffect(()=>{
@@ -16,22 +17,28 @@ const ReviewSection = (props) => {
                     const revObj = snap.val();
                     const revList = Object.keys(revObj).map(key => ({
                         ...revObj[key],
-                        userId: key, 
-                    }));
+                        authId: key, 
+                    })); 
                     setReviews(revList)
                 } else {
                     setReviews([]);
                 }  
                 setLoading(false);
             });      
-
         return ()=> {
             props.firebase.book(props.bookId + '/reviews').off();
         }
-
     }, [props.firebase, props.bookId]);
 
 
+    const onDelete = () => {
+        props.firebase.book(props.bookId + '/reviews/' + props.authUser.uid)
+        .remove()
+        .catch(error => {
+            setError(error);
+        })
+    }
+ 
 
     return (
         <div>
@@ -39,23 +46,19 @@ const ReviewSection = (props) => {
             {loading && <div>Ładuje się...</div>}
             <ul>
                 {reviews.map(rev => (
-                    <li key={rev.userId}>
+                    <li key={rev.authId}>
                         <span>Autor: {rev.author} </span>
                         <span>Ocena: {rev.rating} </span>
-                        <DeleteButton/><br/>
+                        { props.authUser.uid === rev.authId ? <button onClick={onDelete}>Usuń</button> : null}
                         <p>{rev.text}</p>
                     </li>
                 ))}
             </ul>
+                {error && <p>{error.message}</p>}
         </div>
     )
 }
 
-const DeleteButton = () => {
-    return (
-        <button>Usuń</button>
-    )
-}
 
 
 export default withFirebase(ReviewSection);
