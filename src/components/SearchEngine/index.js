@@ -31,7 +31,7 @@ const SearchEngine = props => {
             props.firebase.books()
                 .orderByChild(`${criterion}`)
                 .startAt(`${searchWord}`)
-                .endAt(`${searchWord}`+`\uf8ff`)
+                .endAt(`${searchWord}\uf8ff`)
                 .limitToFirst(5)
                 .once('value')
                 .then(snap => {

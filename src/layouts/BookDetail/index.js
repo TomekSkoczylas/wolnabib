@@ -51,7 +51,7 @@ const BookDetail = (props) => {
                 <div>
                     <h2>{book.title}</h2>
                     <span><strong>Autor: {book.author} </strong></span><br/>
-                    <img src={book.thumburl}/> 
+                    <img src={book.thumburl} alt="okładka"/> 
                     <p>Opis: {book.description}</p><br/>
                     <span>Kategoria: {book.subject} </span><br/>
                     <span>Wydanie: {book.publisher} <br/> {book.pubdate}, {book.publocation}</span><br/>
