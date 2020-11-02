@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 
 const SearchEngine = props => {
     const [criterion, setCriterion] = useState("title");
-    const [searchWord, serSearchWord] = useState('');
+    const [searchWord, setSearchWord] = useState('');
     const [loading, setLoading] = useState(false);
     const [bookList, setBookList] = useState([]);
     const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ const SearchEngine = props => {
     }
 
     const onSearchWordChange = e => {
-        serSearchWord(e.target.value);
+        setSearchWord(e.target.value);
     }
 
 
@@ -51,7 +51,7 @@ const SearchEngine = props => {
         } else {
             // *** w przypadku braku hasła wyszukiwania pokazuje pierwsze 10 książek z listy *** 
             props.firebase.books()
-                .limitToFirst(10)
+                .limitToFirst(40)
                 .once('value')
                 .then (snap => {
                     const snapObject = snap.val()

@@ -12,7 +12,7 @@ import BookDetail from '../BookDetail';
 const MainPage = () => {
     return (
     <div>
-        <h1>Strona Główna</h1>
+        <h1>Katalog książek</h1>
         <Switch>
             <Route exact path={ROUTES.MAIN} component={SearchEngine}/>
             <Route exact path={ROUTES.MAIN_DETAIL} component={BookDetail} />
