@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {withFirebase} from "../../functions/Firebase";
 
 
-
 const Admin = () => {
     return (
         <div>
@@ -35,6 +34,7 @@ const BookAddFormBase = props => {
         editor,
         error,
     } = book;
+
 
 
     const onChange = event => {

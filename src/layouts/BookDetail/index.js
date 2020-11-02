@@ -50,9 +50,12 @@ const BookDetail = (props) => {
                 {book && (
                 <div>
                     <h2>{book.title}</h2>
-                    <span><strong>Autor: {book.author_firstname} {book.author_surname}</strong></span><br/> 
-                    <span>Kategoria: {book.category}</span><br/>
-                    <span>Edycja: {book.editor}, {book.edition_year}</span><br/>
+                    <span><strong>Autor: {book.author} </strong></span><br/>
+                    <img src={book.thumburl}/> 
+                    <p>Opis: {book.description}</p><br/>
+                    <span>Kategoria: {book.subject} </span><br/>
+                    <span>Wydanie: {book.publisher} <br/> {book.pubdate}, {book.publocation}</span><br/>
+                    <span>ISBN: {book.isbn}</span><br/>
                     <span>Wasza ocena:
                         { average ? <span style={{fontSize: 32 }}>
                             <StarRatingComponent

@@ -59,7 +59,7 @@ const SearchEngine = props => {
                         ...snapObject[key],
                         book_id: key,
                     }));
-                    console.log(snapList);
+                    // console.log(snapList);
                     setBookList(snapList);
                     setLoading(false);
                 })
@@ -101,7 +101,8 @@ const SearchEngine = props => {
                         <Link to={`${ROUTES.MAIN}/${book.book_id}`}>
                             <div>
                             <span><strong>Tytuł: {book.title} </strong></span><br/>
-                            <span>Autor: {book.author_firstname} {book.author_surname}</span><br/>
+                            <span>Autor: {book.author} </span><br/>
+                            <span>Wydawnictwo: { book.publisher} </span>
                             </div>
                         </Link>
                 
