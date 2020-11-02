@@ -77,8 +77,8 @@ const SearchEngine = props => {
                 <label>Kryterium wyszukiwania
                 <select value={criterion} onChange={onCritChange}>
                     <option value="title">Tytuł</option>
-                    <option value="author_surname">Autor</option>
-                    <option value="category">Kategoria</option>
+                    <option value="author">Autor</option>
+                    <option value="subject">Temat</option>
                 </select>
                 </label>
                 <input

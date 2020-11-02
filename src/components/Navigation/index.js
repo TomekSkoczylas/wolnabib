@@ -23,7 +23,7 @@ const NavAuth = ({authUser}) => {
         <div>
             <ul>
                 <LogOutButton/>
-                <Link to={ROUTES.MAIN}>Storna główna</Link>
+                <Link to={ROUTES.MAIN}>Katalog książek</Link>
                 <Link to={ROUTES.ACCOUNT}>Twoje Konto</Link>
             </ul>
             <span>{authUser.username}</span>
