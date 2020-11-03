@@ -6,20 +6,20 @@ import * as ROUTES from '../../constants/routes';
 
 
 const SearchEngine = props => {
-    const [criterion, setCriterion] = useState("title");
+    // const [criterion, setCriterion] = useState("title");
     const [searchWord, setSearchWord] = useState('');
     const [loading, setLoading] = useState(false);
     const [bookList, setBookList] = useState([]);
     const [error, setError] = useState(null);
 
 
-    const onCritChange = e => {
-        setCriterion(e.target.value);
-    }
+    // const onCritChange = e => {
+    //     setCriterion(e.target.value);
+    // }
 
-    const onSearchWordChange = e => {
-        setSearchWord(e.target.value);
-    }
+    // const onSearchWordChange = e => {
+    //     setSearchWord(e.target.value);
+    // }
 
 
     const onSubmit = e => {
@@ -29,10 +29,10 @@ const SearchEngine = props => {
             // const searchWordToLower = searchWord.toLowerCase();
             // const searchWordToUpper = searchWord.toUpperCase();
             props.firebase.books()
-                .orderByChild(`${criterion}`)
+                .orderByChild(`title`)
                 .startAt(`${searchWord}`)
                 .endAt(`${searchWord}\uf8ff`)
-                .limitToFirst(5)
+                .limitToFirst(7)
                 .once('value')
                 .then(snap => {
                     const snapObject = snap.val()
@@ -51,7 +51,7 @@ const SearchEngine = props => {
         } else {
             // *** w przypadku braku hasła wyszukiwania pokazuje pierwsze 10 książek z listy *** 
             props.firebase.books()
-                .limitToFirst(40)
+                .limitToLast(15)
                 .once('value')
                 .then (snap => {
                     const snapObject = snap.val()
@@ -60,7 +60,7 @@ const SearchEngine = props => {
                         book_id: key,
                     }));
                     // console.log(snapList);
-                    setBookList(snapList);
+                    setBookList(snapList.reverse());
                     setLoading(false);
                 })
                 .catch(error => {
@@ -74,19 +74,19 @@ const SearchEngine = props => {
     return (
         <div>
             <form onSubmit={onSubmit}>
-                <label>Kryterium wyszukiwania
+                {/* <label>Kryterium wyszukiwania
                 <select value={criterion} onChange={onCritChange}>
                     <option value="title">Tytuł</option>
                     <option value="author">Autor</option>
                     <option value="subject">Temat</option>
                 </select>
-                </label>
+                </label> */}
                 <input
                     name="searchPhrase"
                     value={searchWord}
-                    onChange={onSearchWordChange}
+                    onChange={e => setSearchWord(e.target.value)}
                     type="text"
-                    placeholder="wyszukaj..."
+                    placeholder="Wpisz tytuł książki..."
                 />
                 <button type="submit">Wyszukaj Książkę</button>
                 {error && <p> {
