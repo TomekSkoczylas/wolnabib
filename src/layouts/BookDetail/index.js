@@ -4,6 +4,7 @@ import {AuthUserContext} from '../../functions/Session';
 import ReviewAdd from '../../components/ReviewAdd';
 import ReviewSection from '../../components/ReviewSection';
 import StarRatingComponent from 'react-star-rating-controlled-component';
+import logo from './logo.png';
 
 
 const BookDetail = (props) => {
@@ -40,7 +41,7 @@ const BookDetail = (props) => {
 
     }, [props.firebase, props.match.params]);
 
-    // console.log(book);
+
 
     return (
         <AuthUserContext.Consumer>
@@ -51,7 +52,8 @@ const BookDetail = (props) => {
                 <div>
                     <h2>{book.title}</h2>
                     <span><strong>Autor: {book.author} </strong></span><br/>
-                    <img src={book.thumburl} alt="okładka"/> 
+                    <img src={book.thumburl ? book.thumburl : logo} alt="okładka zastępcza" />
+                    {/* // <img src={book.thumburl} alt="okładka zastępcza"/>  */}
                     <p>Opis: {book.description}</p><br/>
                     <span>Kategoria: {book.subject} </span><br/>
                     <span>Wydanie: {book.publisher} <br/> {book.pubdate}, {book.publocation}</span><br/>
