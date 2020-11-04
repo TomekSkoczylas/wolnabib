@@ -5,6 +5,7 @@ import { compose } from "recompose";
 
 import { withFirebase } from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
+import './style.scss';
 
 const INITIAL_STATE = {
     username: '',
@@ -111,8 +112,8 @@ const SingUpFormBase = (props) => {
 };
 
 const SignUpLink = () => (
-    <p>
-        Nie masz konta? <Link to={ROUTES.SIGNUP}>Zausz konto!</Link>
+    <p className="signup-link--wraper">
+        <Link to={ROUTES.SIGNUP} className="signup-link--link">Zapisz się</Link>
     </p>
 )
 

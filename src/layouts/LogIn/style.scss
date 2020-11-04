@@ -1,0 +1,186 @@
+@import "../../styles/globalStyles.scss";
+
+.login-page {
+    width: 100%;
+    background-color: $color-pink;
+    .intro-section {
+        width: 100%;
+        background: linear-gradient($color-grey 50%, $color-pink 0%);
+    }
+    .bussines_section {
+        background-color: $color-pink;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 60px 0 20px 0;
+            @include tablet {
+                flex-direction: row;
+                justify-content: center;
+                padding: 90px 0 20px 0;
+        }
+
+    } 
+}
+    
+
+.pic-container {
+    display: flex;
+    justify-content: center;
+    .pic-logo {
+        width: 30vh;
+        height: 30vh;
+        background-image: url("../../images/cropped-wolnabibliotekaLOGO1.png");
+        background-size: cover;
+        border-radius: 25%;
+        margin: 20px auto;
+        @include tablet {
+            width: 0;
+            height: 0;
+            margin: 0;
+        }
+    
+    }
+}
+
+
+.photo-container {
+    display: flex;
+    justify-content: space-around;
+    @include tablet {
+        width: 100%;
+        margin: 50px auto;
+    }
+    .pic-1 {
+        background-image: url("../../images/www.glowna01.jpg");
+    }
+    .pic-2 {
+        background-image: url("../../images/www.glowna02.jpg");
+    }
+    .pic-3 {
+        background-image: url("../../images/www.glowna03.jpg");
+    }        
+}
+
+
+.pic-photo {
+    width: 0;
+    height: 0;
+    background-size: cover;
+    @include tablet {
+        margin: 15px 5px 0 5px;
+        width: 300px;
+        height: 200px;
+    }    
+    
+}
+
+
+.page-name {
+    font-family: $ubuntu;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+        &--wolbib {
+            font-size: 6vw;
+            padding: 10px 36px;
+            border-bottom: 5px solid $color-grey;
+            @include mobile {
+                padding: 14px 26px;
+                font-size: 7vw;
+            } 
+        }
+        &--czytelnia {
+            font-size: 4vw;
+            padding: 16px 30px;
+            border-bottom: 4px solid $color-grey;
+            @include mobile {
+                padding: 5px 20px;
+                font-size: 5vw;
+            }
+    
+        }
+}
+
+.log-in--panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include tablet {
+        margin-right: 75px;
+    }
+}
+
+.form-body {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_field {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid black;
+    outline: 0;
+    font-size: 6vw;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    transition: color 0.2s;
+    &:focus {
+        border-color: white;
+        color: white; 
+    }
+    &:required,&:invalid { box-shadow:none; }
+    @include tablet {
+        font-size: 24px;
+    }
+}
+
+.login-btn {
+        background-color: $color-grey;
+        font-size: 24px;
+        padding: 10px 0;
+        width: 90%;
+        box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.75);
+        &:hover {
+            filter: brightness(130%);
+        }
+}
+
+
+.sign-up--panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    @include tablet {
+        margin: 0 0 0 75px;
+    }
+}
+
+.sign-up--text {
+    color: white;
+    font-size: 22px;
+    line-height: 32px;
+}
+
+
+.footer {
+    position: relative;
+    padding-bottom: 40px;
+    background-color: $color-pink;
+    .footer--logo {
+        position: relative;
+        left: 25%; 
+        width: 200px;
+        height: 133px;
+        background-image: url(../../images/logo_male_transparetn.png);
+        background-size: contain;
+        @include tablet {
+            left: 40%;
+        }
+    }
+}

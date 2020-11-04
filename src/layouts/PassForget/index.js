@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { withFirebase } from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
+import './style.scss';
+
 
 const PassForgetPage = () => (
     <div>
@@ -71,8 +73,8 @@ const PassForgetFormBase = (props) => {
 }
 
 const PassForgetLink = () => (
-    <p>
-        <Link to={ROUTES.PASS_FORGET}>Zapomniałem hasła</Link>
+    <p className="pass-forget-link--wraper">
+        <Link to={ROUTES.PASS_FORGET} className="pass-forget-link--link link">Zapomniałam/em/om hasła</Link>
     </p>
 );
 

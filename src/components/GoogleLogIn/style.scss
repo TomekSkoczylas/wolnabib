@@ -1,0 +1,15 @@
+@import "../../styles/globalStyles.scss";
+
+.google-login-btn {
+    background-color: #4285F4;
+    font-family: $ubuntu;
+    font-size: 18px;
+    padding: 10px 20px;
+    &:hover {
+        filter: brightness(130%);
+    }
+}
+
+.google-login-wraper {
+    margin: 10px 5px;
+}

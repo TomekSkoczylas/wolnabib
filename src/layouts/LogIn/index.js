@@ -6,14 +6,40 @@ import {withFirebase} from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
 import SignInWithGoogle from "../../components/GoogleLogIn";
 import {PassForgetLink} from "../PassForget";
+import './style.scss';
 
 const LogInPage = () => (
-    <div>
-        <h1>Strona Logowania</h1>
-        <LogInForm/>
-        <SignInWithGoogle/>
-        <PassForgetLink/>
-        <SignUpLink/>
+    <div className="login-page container">
+        <section className="intro-section">
+            <div className="pic-container">
+                <div className="pic-logo"></div>
+                <div className="photo-container">
+                    <div className="pic-photo pic-1"></div>
+                    <div className="pic-photo pic-2"></div>
+                    <div className="pic-photo pic-3"></div>
+                </div>
+                
+            </div>
+            <div className="page-name">
+            <span className="page-name--wolbib">WOLNA BIBLIOTEKA</span>
+            <span className="page-name--czytelnia">CZYTELNIA</span>
+            </div>
+        </section>
+        <section className="bussines_section container">
+        <div className='log-in--panel'>
+            <LogInForm/>
+            <PassForgetLink/>
+        </div>
+            <div className='sign-up--panel'>
+                <p className='sign-up--text'>Nie masz konta?</p>
+                <SignInWithGoogle/>
+                <p className='sign-up--text'>lub</p>
+                <SignUpLink/>
+             </div>
+        </section>
+        <div className="footer">
+            <div className="footer--logo"></div>
+        </div>
     </div>
 );
 
@@ -66,22 +92,27 @@ const LogInFormBase = (props) => {
 
     return (
         <form onSubmit={onSubmit}>
+            <div className="form-body">
             <input
+                className="input_field"
                 name='email'
                 value={email}
                 onChange={onChange}
                 type="text"
-                placeholder="Podaj swój adres email"
-            />
+                placeholder="Email"
+                autoComplete="off"
+            /><br/>
             <input
+                className="input_field"
                 name='password'
                 value={password}
                 onChange={onChange}
                 type='password'
-                placeholder="Podaj hasło logowania"
-            />
-            <button disabled={isInvalid} type='submit'>Zaloguj się</button>
-            { error && <p>{error.message}</p>}
+                placeholder="Hasło"
+            /><br/>
+            <button disabled={isInvalid} type='submit' className="login-btn btn">Zaloguj się</button>
+            { error && <p className="error-message">{error.message}</p>}
+            </div>
         </form>
     )
 }

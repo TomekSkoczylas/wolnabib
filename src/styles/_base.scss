@@ -1,0 +1,50 @@
+
+@import "fonts";
+
+* {
+    box-sizing: border-box;
+  }
+  
+  a {
+    text-decoration: none;
+
+  }
+  
+  .container {
+     width: 100%;
+    //  padding: 0 15px;
+     margin: 0 auto;
+    @include notebook {
+      max-width: 1352px;     
+    }
+  }
+  
+  .error-message {
+    background-color: red;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: $ubuntu;
+  }
+
+
+  .btn {
+    display: inline-block;
+    border-radius: 5px;
+    color: white;
+    font-family: $ubuntu;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+// .link {
+//   text-decoration: none;
+//   color: black;
+//   font-family: $ubuntu; 
+//   background-color: lightgray;
+//   padding: 5px 10px;
+//   border-radius: 5px;
+// }

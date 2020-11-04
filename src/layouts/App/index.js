@@ -10,10 +10,12 @@ import * as ROUTES from '../../constants/routes';
 import {withAuthentication} from '../../functions/Session';
 import Admin from "../Admin";
 import Navigation from '../../components/Navigation';
+import "./style.scss";
+
 
 const App = () => (
         <Router>
-            <div>
+            <div className="app container">
                 <Navigation/>
                 <Route exact path={ROUTES.LOGIN} component={LogInPage}/>
                 <Route path={ROUTES.ACCOUNT} component={AccountPage}/>

@@ -6,6 +6,7 @@ import { withFirebase } from '../../functions/Firebase';
 import { compose } from "recompose";
 
 import * as ROUTES from "../../constants/routes";
+import "./style.scss";
 
 const SignInWithGoogleBase = (props) => {
     const [error, setError] = useState({error: null});
@@ -33,11 +34,13 @@ const SignInWithGoogleBase = (props) => {
     }
 
     return (
+        <div className="google-login-wraper">
         <form onSubmit={onSubmit}>
-            <button type='submit'>Sign In With Google</button>
+            <button type='submit' className="google-login-btn btn">Zaloguj się przez Google</button>
 
-            {error.error && <p>{error.error.message}</p>}
+            {error.error && <p className="error-message">{error.error.message}</p>}
         </form>
+        </div>
     )
 }
 

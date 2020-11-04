@@ -1,0 +1,15 @@
+@import "../../styles/globalStyles.scss";
+
+.pass-forget-link--wraper {
+    text-align: center;
+    margin: 20px 10px;
+}
+
+.pass-forget-link--link {
+    color: black;
+    text-decoration: underline;
+    font-size: 19px;
+    &:hover {
+        filter: brightness(130%);
+    }
+}
