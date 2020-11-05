@@ -4,13 +4,22 @@ import {AuthUserContext} from '../../functions/Session';
 import ReviewAdd from '../../components/ReviewAdd';
 import ReviewSection from '../../components/ReviewSection';
 import StarRatingComponent from 'react-star-rating-controlled-component';
-import logo from './logo.png';
-
+import randomBook from './book.png';
+import "./style.scss";
+import { IoMdArrowRoundDown, IoMdArrowRoundUp } from 'react-icons/io';
 
 const BookDetail = (props) => {
     const [book, setBook] = useState({});
     const [loading, setLoading] = useState(false);
     const [average, setAverage] = useState(0);
+    const [expanded, setExpanded] = useState(false);
+
+    const toggleExpanded = () => {
+        setExpanded(prevState => {
+            return !prevState
+        })
+    }
+
 
     useEffect(()=> {
            setLoading(true);
@@ -19,7 +28,11 @@ const BookDetail = (props) => {
             .book(props.match.params.id)
             .on('value', snap => {
                 //dodajemy książkę do stanu
-                setBook({...snap.val()});
+                    const bookObj = snap.val()
+                    const pubyear = bookObj.pubdate.toString().slice(0,4);
+                    // console.log(pubyear);
+                setBook({...snap.val(), pubyear});
+                // console.log(book);
                 //obliczamy średnią ocen czytelników
                 const revObject = snap.val().reviews
                 if(revObject){
@@ -42,34 +55,45 @@ const BookDetail = (props) => {
     }, [props.firebase, props.match.params]);
 
 
-
     return (
         <AuthUserContext.Consumer>
             {authUser => (
-            <div>
-                {loading && <div>Loading...</div>}
+            <div className="book-details">
+                {loading && <div className="loading-msg">Ładujemy dane...</div>}
                 {book && (
-                <div>
-                    <h2>{book.title}</h2>
-                    <span><strong>Autor: {book.author} </strong></span><br/>
-                    <img src={book.thumburl ? book.thumburl : logo} alt="okładka zastępcza" />
-                    <p>Opis: {book.description}</p><br/>
-                    <span>Kategoria: {book.subject} </span><br/>
-                    <span>Wydanie: {book.publisher} <br/> {book.pubdate}, {book.publocation}</span><br/>
-                    <span>ISBN: {book.isbn}</span><br/>
-                    <span>Wasza ocena:
-                        { average ? <span style={{fontSize: 32 }}>
-                            <StarRatingComponent
-                                name="rating"
-                                value={average}
-                                starCount={6}
-                                editing={false}
-                                starColor={'red'}
-                                emptyStarColor={'black'}
-                            /> 
-                        </span> : <span> jeszcze nie ma ocen </span>}
-                        ({average})
-                    </span>
+                <div className="book-details__container">
+                    <h2 className="book-title">{book.title}</h2>
+                    <div className="metadata">
+                        <img src={book.thumburl ? book.thumburl : randomBook} alt="okładka zastępcza" className="metadata__cover" />
+                        <div className="metadata__info">
+                            <span className="book-data__item b-author">{book.author}</span>
+                            <span className="book-data__item b-rating">Wasza ocena: ({average}/6)<br/>
+                              { average ? <span className="book-rating__stars">
+                                  <StarRatingComponent
+                                      name="rating"
+                                      value={average}
+                                      starCount={6}
+                                      editing={false}
+                                      starColor={'red'}
+                                      emptyStarColor={'black'}
+                                  /> 
+                              </span> : <span className="book-rating--text"> jeszcze nie ma ocen </span>}
+                          </span>
+                          <span className="book-data__item b-category">Kategoria: {book.subject} </span><br/>
+                          <span className="book-data__item b-edtion">
+                              Wydanie: {book.publisher}, <br/>
+                              {book.publocation} {book.pubyear} <br/>
+                              ISBN: {book.isbn} 
+                           </span>
+                        </div>
+                        
+                    </div>
+                    <div className="description">
+                        <p className={expanded ? "text_long dscr-text" : "text_short dscr-text"}>Opis: {book.description}</p>
+                        <div onClick={toggleExpanded} className="book-dscr--buton">
+                            {expanded ? <IoMdArrowRoundUp className="dscr-icon"/> : <IoMdArrowRoundDown className="dscr-icon"/> }
+                        </div>
+                    </div>
                 </div>
                 )}
                 <ReviewAdd bookId={props.match.params.id} authUser={authUser}/>

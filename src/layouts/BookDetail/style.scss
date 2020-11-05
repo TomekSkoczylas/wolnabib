@@ -1,0 +1,120 @@
+@import "../../styles/globalStyles.scss";
+
+.book-details {
+    background-color: $color-grey;
+    color: white;
+}
+
+.book-details__container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    margin: 0 auto;
+    @include tablet {
+        width: 90%;
+        padding: 40px 0;
+    }
+    @include notebook {
+        width: 80%;
+        padding: 60px 0;
+    }
+}
+
+
+.metadata {
+    display: flex;
+}  
+
+.metadata__info {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1%;
+}
+
+
+.metadata__cover {
+    width: 40%;
+    margin: 5px 3%;
+    @include tablet {
+        width: 35%;
+    }
+}
+
+.book-title {
+    background-color: $color-pink;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 6vw;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto 20px auto;
+    width: 90%;
+}
+
+
+.book-data__item {
+    font-size: 3vw;
+    line-height: 4vw;
+    margin: 3px 0;
+    @include tablet {
+        font-size: 28px;
+        line-height: 36px;
+    }
+}
+
+.b-author {
+    font-size: 4.5vw;
+    font-weight: bold;
+    @include tablet {
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
+
+
+.book-rating__stars {
+    font-size: 8vw;
+    line-height: 9vw;
+    @include tablet {
+        font-size: 58px;
+        line-height: 64px;
+    }
+}
+
+
+.description {
+    width: 96%;
+    margin: 0 auto;
+    font-size: 3vw;
+    line-height: 3.5vw;
+    padding: 20px;
+    @include tablet {
+        font-size: 26px;
+        line-height: 29px;
+    }
+}
+
+.dscr-text {
+    text-align: justify;
+}
+
+.text_short {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.book-dscr--buton {
+    background-color: $color-pink;
+    padding: 5px;
+    border-radius: 3px;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.dscr-icon {
+    color: $color-grey;
+    font-size: 24px;
+}
