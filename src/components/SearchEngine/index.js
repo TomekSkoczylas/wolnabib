@@ -21,6 +21,7 @@ const SearchEngine = props => {
     const onSubmit = e => {
         setError(null);
         setBookList([]);
+        setLoading(true);
         if (searchWord) {
             const upperSearchWord = capitalize(searchWord);
             console.log(searchWord);
@@ -97,7 +98,7 @@ const SearchEngine = props => {
             </form>
             </div>
             <div className="display--container">
-            {loading && <p>Ładujemy dane...</p>}
+            {loading && <div className="loading-msg">Ładujemy dane...</div>}
                 <ul className="display--list">
                     <h2 className="display--header">Znalezione tytuły:</h2>
                     {bookList.map(book => (
