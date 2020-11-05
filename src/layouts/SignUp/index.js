@@ -17,8 +17,10 @@ const INITIAL_STATE = {
 
 
 const SignUpPage = () => (
-    <div>
-        <h1>Zausz Konto!</h1>
+    <div className="signup-page">
+        <div className='signup-photo--container'>
+        <div className='signup-photo'></div>
+        </div>
         <SignUpForm/>
     </div>
 );
@@ -75,39 +77,52 @@ const SingUpFormBase = (props) => {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '' || username === '';
 
     return (
+        <section className="signup-form--container">
+            <div className="signup-form--wraper">
+            <div className="signup-form--text">Podaj swoje dane</div>
         <form onSubmit={onSubmit}>
+            <div className="signup-form--fields">
             <input
+                className="singup-input--field"
                 name="username"
                 value={username}
                 onChange={onChange}
                 type="text"
-                placeholder="Full Name"
+                placeholder="Twoje imię"
+                autoComplete="off"
             />
             <input
+                className="singup-input--field"
                 name="email"
                 value={email}
                 onChange={onChange}
                 type="text"
-                placeholder="Email Address"
+                placeholder="Twój adres email"
+                autoComplete="off"
             />
             <input
+                className="singup-input--field"
                 name="passwordOne"
                 value={passwordOne}
                 onChange={onChange}
                 type="password"
-                placeholder="Password"
+                placeholder="Twoje hasło"
             />
             <input
+                className="singup-input--field"
                 name="passwordTwo"
                 value={passwordTwo}
                 onChange={onChange}
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="Potwierdź hasło"
             />
-            <button disabled={isInvalid} type="submit">Zausz!</button>
+            <button disabled={isInvalid} type="submit" className="signup-btn btn">Zapisz się</button>
 
-            {error && <p>{error.message}</p>}
+            {error && <p className="error-message">{error.message}</p>}
+            </div>
         </form>
+        </div>
+        </section>
     );
 };
 
