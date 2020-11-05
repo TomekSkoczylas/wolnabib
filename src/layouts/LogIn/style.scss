@@ -32,7 +32,7 @@
         background-image: url("../../images/cropped-wolnabibliotekaLOGO1.png");
         background-size: cover;
         border-radius: 25%;
-        margin: 20px auto;
+        margin: 10px auto;
         @include tablet {
             width: 0;
             height: 0;
@@ -46,9 +46,10 @@
 .photo-container {
     display: flex;
     justify-content: space-around;
+    margin: 50px 0 50px 0;
     @include tablet {
         width: 100%;
-        margin: 50px auto;
+        margin: 20px 0 50px 0;
     }
     .pic-1 {
         background-image: url("../../images/www.glowna01.jpg");
@@ -70,13 +71,17 @@
         margin: 15px 5px 0 5px;
         width: 300px;
         height: 200px;
+    }
+    @include notebook {
+        width: 360px;
+        height: 240px;
+        margin: 0 5px 0 5px;
     }    
     
 }
 
 
 .page-name {
-    font-family: $ubuntu;
     font-weight: 600;
     color: white;
     display: flex;

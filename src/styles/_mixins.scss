@@ -1,5 +1,5 @@
 @mixin notebook {
-    @media (min-width: 1235px) {
+    @media (min-width: 1135px) {
       @content;
     }
   };
