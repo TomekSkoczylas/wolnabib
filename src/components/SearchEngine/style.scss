@@ -1,0 +1,133 @@
+@import "../../styles/globalStyles.scss";
+
+.search--container {
+    background-color: $color-pink;
+}
+
+.search-form--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.search--input-field {
+    width: 80%;
+    border: 0;
+    border-bottom: 2px solid black;
+    outline: 0;
+    font-family: $ubuntu;
+    font-size: 6vw;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    transition: color 0.2s;
+    &:focus {
+        border-color: white;
+        color: white; 
+    }
+    &:required,&:invalid { box-shadow:none; }
+    @include tablet {
+        font-size: 28px;
+        width: 60%;
+    }
+    @include notebook {
+        font-size: 32px;
+        width: 45%;
+    }   
+}
+
+
+.search--btn { 
+    background-color: $color-grey;
+    font-size: 24px;
+    padding: 10px 0;
+    width: 65%;
+    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.75);
+    &:hover {
+    filter: brightness(130%);
+    }
+    @include tablet {
+        width: 35%;
+    }
+    @include notebook {
+        width: 25%;
+    }
+}
+
+
+.display--container {
+    background-color: $color-grey;
+}
+
+.display--list {
+    padding: 30px 0;
+    margin: 0 auto;
+    width: 80%;
+    list-style: none;
+    @include tablet {
+        width: 70%;
+    }
+    @include notebook {
+        width: 60%;
+    }
+}
+
+.display--header {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    padding: 20px 0;
+}
+
+.display-list--item {
+    margin: 7px auto;
+    padding: 10px;
+    background-color: rgba(250,128,114,0.7);
+    border-radius: 5px;
+    @include tablet {
+        margin: 10px auto;
+    }
+    @include notebook {
+        margin: 13px auto;
+    }
+}
+
+.display-item--link {
+    color: white;
+    &:hover {
+        color: lightgray;
+    }
+}
+
+.display-item--content { 
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+.content {
+    margin: 3px;
+    font-size: 16px;
+    margin-left: 10px;
+    @include tablet {
+        margin: 5px;
+        font-size: 19px;
+    }
+    @include notebook {
+        font-size: 23px;
+    }
+}
+
+
+span.display-content--title {
+    font-size: 20px;
+    font-weight: bold;
+    @include tablet {
+        font-size: 24px;
+    }
+    @include notebook {
+        font-size: 28px;
+    }
+}

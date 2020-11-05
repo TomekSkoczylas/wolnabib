@@ -11,8 +11,7 @@ import BookDetail from '../BookDetail';
 
 const MainPage = () => {
     return (
-    <div>
-        <h1>Katalog książek</h1>
+    <div className="main-page">
         <Switch>
             <Route exact path={ROUTES.MAIN} component={SearchEngine}/>
             <Route exact path={ROUTES.MAIN_DETAIL} component={BookDetail} />

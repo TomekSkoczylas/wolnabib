@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import { withFirebase } from "../../functions/Firebase";
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import "./style.scss";
+
 
 
 const SearchEngine = props => {
@@ -12,26 +14,21 @@ const SearchEngine = props => {
     const [bookList, setBookList] = useState([]);
     const [error, setError] = useState(null);
 
-
-    // const onCritChange = e => {
-    //     setCriterion(e.target.value);
-    // }
-
-    // const onSearchWordChange = e => {
-    //     setSearchWord(e.target.value);
-    // }
-
+    const capitalize = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
 
     const onSubmit = e => {
         setError(null);
         setBookList([]);
         if (searchWord) {
-            // const searchWordToLower = searchWord.toLowerCase();
-            // const searchWordToUpper = searchWord.toUpperCase();
+            const upperSearchWord = capitalize(searchWord);
+            console.log(searchWord);
+            console.log(upperSearchWord);
             props.firebase.books()
                 .orderByChild(`title`)
-                .startAt(`${searchWord}`)
-                .endAt(`${searchWord}\uf8ff`)
+                .startAt(`${upperSearchWord}`)
+                .endAt(`${upperSearchWord}\uf8ff`)
                 .limitToFirst(7)
                 .once('value')
                 .then(snap => {
@@ -72,8 +69,10 @@ const SearchEngine = props => {
     }
 
     return (
-        <div>
+        <section className="search-and-display">
+            <div className="search--container">
             <form onSubmit={onSubmit}>
+                <div className="search-form--container">
                 {/* <label>Kryterium wyszukiwania
                 <select value={criterion} onChange={onCritChange}>
                     <option value="title">Tytuł</option>
@@ -82,35 +81,39 @@ const SearchEngine = props => {
                 </select>
                 </label> */}
                 <input
+                    className="search--input-field"
                     name="searchPhrase"
                     value={searchWord}
                     onChange={e => setSearchWord(e.target.value)}
                     type="text"
                     placeholder="Wpisz tytuł książki..."
+                    autoComplete="off"
                 />
-                <button type="submit">Wyszukaj Książkę</button>
-                {error && <p> {
+                <button type="submit" className="search--btn btn">Wyszukaj Książkę</button>
+                {error && <p className="error-message"> {
                     (error.message === "Cannot convert undefined or null to object") ? "Sorry, nic nie znaleziono" : error.message
                 } </p>}
+                </div>
             </form>
-            <h2>Wyniki</h2>
+            </div>
+            <div className="display--container">
             {loading && <p>Ładujemy dane...</p>}
-            <ul>
-                {bookList.map(book => (
-                    <li key={book.book_id}>
-                        <Link to={`${ROUTES.MAIN}/${book.book_id}`}>
-                            <div>
-                            <span><strong>Tytuł: {book.title} </strong></span><br/>
-                            <span>Autor: {book.author} </span><br/>
-                            <span>Wydawnictwo: { book.publisher} </span>
-                            </div>
-                        </Link>
-                
-                    </li>
-                ))}
+                <ul className="display--list">
+                    <h2 className="display--header">Znalezione tytuły:</h2>
+                    {bookList.map(book => (
+                        <li key={book.book_id} className="display-list--item">
+                            <Link to={`${ROUTES.MAIN}/${book.book_id}`} className="display-item--link">
+                                <div className="display-item--content">
+                                    <span className="display-content--title content">{book.title}</span>
+                                    <span className="display-content--author content">  Autorstwa: {book.author} </span>
+                                    <span className="display-content--publisher content">Wydana: { book.publisher} </span>
+                                </div>
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
-
-        </div>
+            </div>
+        </section>
     )
 }               
     

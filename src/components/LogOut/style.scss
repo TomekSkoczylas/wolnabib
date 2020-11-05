@@ -4,6 +4,17 @@
     background-color: transparent;
     border: none;
     margin: 0 20px;
+    @include tablet {
+        &::after {
+            font-family: $ubuntu;
+            color: white;
+            content: "Wyloguj się";
+            font-size: 18px;
+            position: relative;
+            bottom: 9px;
+            left: 11px;
+        }
+    }
 }
 
 .logout--icon {
