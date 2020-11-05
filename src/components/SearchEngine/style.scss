@@ -84,7 +84,7 @@
 .display-list--item {
     margin: 7px auto;
     padding: 10px;
-    background-color: rgba(250,128,114,0.7);
+    background-color: $pink-transparent;
     border-radius: 5px;
     @include tablet {
         margin: 10px auto;

@@ -8,15 +8,15 @@
 .book-details__container {
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
+    padding-top: 20px;
     margin: 0 auto;
     @include tablet {
         width: 90%;
-        padding: 40px 0;
+        padding-top: 40px 0;
     }
     @include notebook {
-        width: 80%;
-        padding: 60px 0;
+        max-width: 1000px;
+        padding-top: 60px 0;
     }
 }
 
@@ -104,6 +104,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 
 .book-dscr--buton {
     background-color: $color-pink;
