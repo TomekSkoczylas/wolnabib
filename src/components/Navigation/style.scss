@@ -1,0 +1,77 @@
+@import "../../styles/globalStyles.scss";
+
+
+.nav--container {
+    display: flex;
+    justify-content: space-between;
+    background-color: $color-grey;
+    padding: 30px 0 10px 0;
+}
+
+.nav--text {
+    margin: auto 15px;
+    color: white;
+    font-size: 18px;
+}
+
+.nav--link-list {
+    margin-left: 20px;
+}
+
+
+a.nav--link-in {
+    @include tablet {
+        &::after {
+            color: white;
+            content: "Start";
+            font-size: 18px;
+            position: relative;
+            bottom: 30%;
+        }
+    }
+}
+
+a.nav--link-up {
+    @include tablet {
+        &::after {
+            color: white;
+            content: "Zapisz się";
+            font-size: 18px;
+            position: relative;
+            bottom: 30%;
+        }
+    }
+}
+
+a.nav--link-main {
+    @include tablet {
+        &::after {
+            color: white;
+            content: "Katalog";
+            font-size: 18px;
+            position: relative;
+            bottom: 30%;
+        }
+    }
+}
+
+
+a.nav--link-acc {
+    @include tablet {
+        &::after {
+            color: white;
+            content: "Katalog";
+            font-size: 18px;
+            position: relative;
+            bottom: 30%;
+        }
+    }
+}
+
+svg.nav--icon {
+    color: $color-pink;
+    font-size: 32px;
+    margin: 0 20px;
+}
+
+
