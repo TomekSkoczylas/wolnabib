@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {withFirebase} from "../../functions/Firebase";
 import StarRatingComponent from 'react-star-rating-controlled-component';
+import './style.scss';
 
 const ReviewAdd = (props) => {
     const [review, setReview] = useState({
@@ -68,27 +69,30 @@ const ReviewAdd = (props) => {
     const isInvalid = text === '' || rating === 0;
 
     return (
-        <div>
+        <div className="rev-add">
+            <h2 className="rev-add__text">Twoja recenzja:</h2>
             <form onSubmit={onSubmit}>
-                <h2>Twoja recenzja</h2>
-                <div style={{fontSize: 36 }}>
-                <StarRatingComponent
-                    name="rating"
-                    value={rating}
-                    starCount={6}
-                    onStarClick={onRatingChange}
-                    starColor={'red'}
-                    emptyStarColor={'black'}
-                />
+                <div className="rev-add__form">
+                    <div className="rev-add__stars">
+                    <StarRatingComponent
+                        name="rating"
+                        value={rating}
+                        starCount={6}
+                        onStarClick={onRatingChange}
+                        starColor={'red'}
+                        emptyStarColor={'black'}
+                    />
+                    </div>
+                        <textarea 
+                            className="rev-add__input"
+                            name="text" 
+                            value={text} 
+                            onChange={onChange}
+                            placeholder="Napisz swoją recenzję"
+                            /><br/>
+                    <button disabled={isInvalid} type="submit" className="rev-add__btn btn">Dodaj recenzję</button>
+                    {error && <p className="error-message">{error.message}</p>}
                 </div>
-                    <textarea
-                        name="text" 
-                        value={text} 
-                        onChange={onChange}
-                        placeholder="Napisz swoją recenzję"
-                        /><br/>
-                <button disabled={isInvalid} type="submit">Dodaj swoją recenzję</button>
-                {error && <p>{error.message}</p>}
             </form>
         </div>
     )

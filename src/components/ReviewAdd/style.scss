@@ -1,0 +1,61 @@
+@import "../../styles/globalStyles.scss";
+
+.rev-add {
+    margin: 0 auto;
+    width: 90%;
+    @include tablet {
+        max-width: 900px;
+    }
+    
+}
+
+.rev-add__text {
+    margin-left: 5px;
+    font-size: 25px;
+    @include tablet {
+        font-size: 24px;
+    }
+}
+
+.rev-add__stars {
+    font-size: 60px;
+}
+
+.rev-add__input {
+    width: 100%;
+    height: 45px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+    font-size: 22px;
+    color: black;
+    padding: 7px 0;
+    background: $lighter-grey;
+    font-family: $ubuntu;
+    transition: color 0.2s;
+    overflow: hidden;
+    &:focus {
+        color: white;
+        height: 100px;
+    }
+    &:required,&:invalid { box-shadow:none; }
+    @include tablet {
+        height: 41px;
+        font-size: 24px;
+    }
+}
+
+.rev-add__btn {
+    background-color: $color-pink;
+    font-size: 18px;
+    color: $color-grey !important;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.75);
+    &:hover {
+        filter: brightness(130%);
+    }
+    &:disabled {
+        filter: brightness(70%);
+    }
+}
