@@ -1,0 +1,95 @@
+@import "../../styles/globalStyles.scss";
+
+.library-browser {
+    background-color: $color-grey;
+}
+
+.browser__nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-btn {
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.nav-icon {
+    color: white;
+}
+
+.browser__list {
+    padding: 30px 0;
+    margin: 0 auto;
+    width: 80%;
+    list-style: none;
+    @include tablet {
+        width: 70%;
+    }
+    @include notebook {
+        width: 60%;
+    }
+}
+
+.browser__header {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    padding: 20px 0;
+    @include mobile {
+        font-size: 0;
+    }
+}
+
+.browser-list__item {
+    margin: 7px auto;
+    padding: 10px;
+    background-color: $pink-transparent;
+    border-radius: 5px;
+    @include tablet {
+        margin: 10px auto;
+    }
+    @include notebook {
+        margin: 13px auto;
+    }
+}
+
+.browser-item__link {
+    color: white;
+    &:hover {
+        color: lightgray;
+    }
+}
+
+.browser-item__content { 
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+}
+
+.content {
+    margin: 3px;
+    font-size: 16px;
+    margin-left: 10px;
+    @include tablet {
+        margin: 5px;
+        font-size: 19px;
+    }
+    @include notebook {
+        font-size: 23px;
+    }
+}
+
+
+span.browser-content__title {
+    font-size: 20px;
+    font-weight: bold;
+    @include tablet {
+        font-size: 24px;
+    }
+    @include notebook {
+        font-size: 28px;
+    }
+}

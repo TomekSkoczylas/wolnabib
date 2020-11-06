@@ -22,7 +22,7 @@ const SignUpPage = () => (
     <div className="signup-page">
         <div className="signup-page__container">
             <div className='signup-photo__container'>
-                <img src={img} className='signup-photo'/>
+                <img src={img} className='signup-photo' alt="ludzie czytający ksiązki"/>
             </div>
             <SignUpForm/>
         </div>

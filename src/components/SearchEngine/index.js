@@ -1,7 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import { withFirebase } from "../../functions/Firebase";
 import { Link } from 'react-router-dom';
+import LibraryBrowser from '../../components/LibraryBrowser';
+
+
+
 import * as ROUTES from '../../constants/routes';
 import "./style.scss";
 
@@ -20,12 +24,11 @@ const SearchEngine = props => {
 
     const onSubmit = e => {
         setError(null);
-        setBookList([]);
         setLoading(true);
         if (searchWord) {
             const upperSearchWord = capitalize(searchWord);
-            console.log(searchWord);
-            console.log(upperSearchWord);
+            // console.log(searchWord);
+            // console.log(upperSearchWord);
             props.firebase.books()
                 .orderByChild(`title`)
                 .startAt(`${upperSearchWord}`)
@@ -47,40 +50,38 @@ const SearchEngine = props => {
                     setError(error);
                 });
         } else {
+                setBookList([]);
             // *** w przypadku braku hasła wyszukiwania pokazuje pierwsze 10 książek z listy *** 
-            props.firebase.books()
-                .limitToLast(15)
-                .once('value')
-                .then (snap => {
-                    const snapObject = snap.val()
-                    const snapList = Object.keys(snapObject).map(key => ({
-                        ...snapObject[key],
-                        book_id: key,
-                    }));
-                    // console.log(snapList);
-                    setBookList(snapList.reverse());
-                    setLoading(false);
-                })
-                .catch(error => {
-                    setError(error)
-                });
+            // props.firebase.books()
+            //     .limitToLast(15)
+            //     .once('value')
+            //     .then (snap => {
+            //         const snapObject = snap.val()
+            //         const snapList = Object.keys(snapObject).map(key => ({
+            //             ...snapObject[key],
+            //             book_id: key,
+            //         }));
+            //         // console.log(snapList);
+            //         setBookList(snapList.reverse());
+            //         setLoading(false);
+            //     })
+            //     .catch(error => {
+            //         setError(error)
+            //     });
         }
         e.preventDefault();
         // console.log(bookList)
     }
+
+    useEffect(()=> {
+        console.log(bookList);
+    })
 
     return (
         <section className="search-and-display">
             <div className="search__container">
             <form onSubmit={onSubmit}>
                 <div className="search-form__container">
-                {/* <label>Kryterium wyszukiwania
-                <select value={criterion} onChange={onCritChange}>
-                    <option value="title">Tytuł</option>
-                    <option value="author">Autor</option>
-                    <option value="subject">Temat</option>
-                </select>
-                </label> */}
                 <input
                     className="search__input-field"
                     name="searchPhrase"
@@ -98,26 +99,34 @@ const SearchEngine = props => {
             </form>
             </div>
             <div className="display__container">
-            {loading && <div className="loading-msg">Ładujemy dane...</div>}
-                <ul className="display__list">
-                    <h2 className="display__header">Znalezione tytuły:</h2>
-                    {bookList.map(book => (
-                        <li key={book.book_id} className="display-list__item">
-                            <Link to={`${ROUTES.MAIN}/${book.book_id}`} className="display-item__link">
-                                <div className="display-item__content">
-                                    <span className="display-content__title content">{book.title}</span>
-                                    <span className="display-content__author content">  Autorstwa: {book.author} </span>
-                                    <span className="display-content__publisher content">Wydana: { book.publisher} </span>
-                                </div>
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                {loading && <div className="loading-msg">Ładujemy dane...</div>}
+                { (bookList.length === 0) ?  <LibraryBrowser/> : <DisplayList bookList={bookList}/>}          
             </div>
             <div className="s-n-d__footer"></div>
         </section>
     )
 }               
     
+
+const DisplayList = ({bookList}) => {
+    return (
+        <ul className="display__list">
+            <h2 className="display__header">Znalezione tytuły:</h2>
+                {bookList.map(book => (
+                    <li key={book.book_id} className="display-list__item">
+                        <Link to={`${ROUTES.MAIN}/${book.book_id}`} className="display-item__link">
+                            <div className="display-item__content">
+                                <span className="display-content__title content">{book.title}</span>
+                                <span className="display-content__author content">  Autorstwa: {book.author} </span>
+                                <span className="display-content__publisher content">Wydana: { book.publisher} </span>
+                            </div>
+                        </Link>
+                    </li>
+                ))}
+        </ul>
+    );
+};
+
+
 
 export default withFirebase(SearchEngine);
