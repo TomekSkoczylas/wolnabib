@@ -1,0 +1,85 @@
+@import "../../styles/globalStyles.scss";
+
+.review-view {
+    margin: 0 auto;
+    width: 90%;
+    @include tablet {
+        max-width: 900px;
+    }
+}
+
+.rev-view__text {
+    font-size: 6vw;
+    margin-bottom: 15px;
+    @include tablet {
+        font-size: 32px;
+    }
+}
+
+.rev-item {
+    background-color: $lighter-grey;
+    border-radius: 5px;
+}
+
+.rev-item__head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 4vw;
+    padding: 10px;
+    @include tablet {
+        font-size: 24px;
+    }
+}
+
+.rev-item__author {
+    margin: 0 10px;
+    // font-size: 16px;
+}
+
+.rev-item__stars {
+    margin: 0 10px;
+    // font-size: 36px;
+}
+
+.rev-item__id {
+    display: flex;
+}
+
+.rev-item__delete {
+    border: none;
+    background: transparent;
+}
+
+.delete-icon {
+    font-size: 4vw;
+    color: $color-pink;
+    @include tablet {
+        font-size: 24px;
+    }
+}
+
+.rev-item__text {
+    padding: 10px 20px;
+    font-size: 3.5vw;
+    @include tablet {
+        font-size: 22px;
+    }
+
+}
+
+.text--short {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.rev-item__text--toggle-btn {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 4vw;
+    color: $color-pink;
+    @include tablet {
+        font-size: 24px;
+    }
+}

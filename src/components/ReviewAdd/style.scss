@@ -3,7 +3,9 @@
 .rev-add {
     margin: 0 auto;
     width: 90%;
+    padding-bottom: 30px;
     @include tablet {
+        padding-bottom: 60px;
         max-width: 900px;
     }
     
@@ -30,7 +32,7 @@
     outline: 0;
     font-size: 22px;
     color: black;
-    padding: 7px 0;
+    padding: 7px;
     background: $lighter-grey;
     font-family: $ubuntu;
     transition: color 0.2s;

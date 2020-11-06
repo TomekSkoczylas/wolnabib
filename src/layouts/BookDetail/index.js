@@ -74,8 +74,8 @@ const BookDetail = (props) => {
                                       value={average}
                                       starCount={6}
                                       editing={false}
-                                      starColor={'red'}
-                                      emptyStarColor={'black'}
+                                      starColor={'#FA8072'}
+                                      emptyStarColor={'#404b59'}
                                   /> 
                               </span> : <span className="book-rating--text"> jeszcze nie ma ocen </span>}
                           </span>
@@ -98,6 +98,7 @@ const BookDetail = (props) => {
                 )}
                 <ReviewAdd bookId={props.match.params.id} authUser={authUser}/>
                 <ReviewSection bookId={props.match.params.id} authUser={authUser}/>
+                <div className="book-details__footer"></div>
             </div>
             )}
         </AuthUserContext.Consumer>

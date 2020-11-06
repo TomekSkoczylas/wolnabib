@@ -79,8 +79,8 @@ const ReviewAdd = (props) => {
                         value={rating}
                         starCount={6}
                         onStarClick={onRatingChange}
-                        starColor={'red'}
-                        emptyStarColor={'black'}
+                        starColor={'#FA8072'}
+                        emptyStarColor={'#404b59'}
                     />
                     </div>
                         <textarea 
