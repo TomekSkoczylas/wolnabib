@@ -6,6 +6,8 @@ import { compose } from "recompose";
 import { withFirebase } from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
 import './style.scss';
+import img from '../../images/zauszkonto.jpg'
+
 
 const INITIAL_STATE = {
     username: '',
@@ -18,10 +20,13 @@ const INITIAL_STATE = {
 
 const SignUpPage = () => (
     <div className="signup-page">
-        <div className='signup-photo--container'>
-        <div className='signup-photo'></div>
+        <div className="signup-page__container">
+            <div className='signup-photo__container'>
+                <img src={img} className='signup-photo'/>
+            </div>
+            <SignUpForm/>
         </div>
-        <SignUpForm/>
+        <div className="signup-page__footer"></div>
     </div>
 );
 
@@ -77,58 +82,56 @@ const SingUpFormBase = (props) => {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '' || email === '' || username === '';
 
     return (
-        <section className="signup-form--container">
-            <div className="signup-form--wraper">
-            <div className="signup-form--text">Podaj swoje dane</div>
-        <form onSubmit={onSubmit}>
-            <div className="signup-form--fields">
-            <input
-                className="singup-input--field"
+        <section className="signup-form__container">
+            <div className="signup-form__text">Podaj swoje dane</div>
+            <form onSubmit={onSubmit}>
+                <div className="signup-form__fields">
+                    <input
+                        className="singup-input__field"
                 name="username"
                 value={username}
                 onChange={onChange}
                 type="text"
                 placeholder="Twoje imię"
                 autoComplete="off"
-            />
-            <input
-                className="singup-input--field"
+                    />
+                    <input
+                        className="singup-input__field"
                 name="email"
                 value={email}
                 onChange={onChange}
                 type="text"
                 placeholder="Twój adres email"
                 autoComplete="off"
-            />
-            <input
-                className="singup-input--field"
+                    />
+                    <input
+                        className="singup-input__field"
                 name="passwordOne"
                 value={passwordOne}
                 onChange={onChange}
                 type="password"
                 placeholder="Twoje hasło"
-            />
-            <input
-                className="singup-input--field"
+                    />
+                    <input
+                        className="singup-input__field"
                 name="passwordTwo"
                 value={passwordTwo}
                 onChange={onChange}
                 type="password"
                 placeholder="Potwierdź hasło"
-            />
-            <button disabled={isInvalid} type="submit" className="signup-btn btn">Zapisz się</button>
+                    />
+                    <button disabled={isInvalid} type="submit" className="signup-btn btn">Zapisz się</button>
 
-            {error && <p className="error-message">{error.message}</p>}
-            </div>
-        </form>
-        </div>
+                    {error && <p className="error-message">{error.message}</p>}
+                </div>
+            </form>
         </section>
     );
 };
 
 const SignUpLink = () => (
-    <p className="signup-link--wraper">
-        <Link to={ROUTES.SIGNUP} className="signup-link--link">Zapisz się</Link>
+    <p className="signup-link__wraper">
+        <Link to={ROUTES.SIGNUP} className="signup-link__link">Zapisz się</Link>
     </p>
 )
 

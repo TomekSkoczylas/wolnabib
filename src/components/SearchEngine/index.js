@@ -71,9 +71,9 @@ const SearchEngine = props => {
 
     return (
         <section className="search-and-display">
-            <div className="search--container">
+            <div className="search__container">
             <form onSubmit={onSubmit}>
-                <div className="search-form--container">
+                <div className="search-form__container">
                 {/* <label>Kryterium wyszukiwania
                 <select value={criterion} onChange={onCritChange}>
                     <option value="title">Tytuł</option>
@@ -82,7 +82,7 @@ const SearchEngine = props => {
                 </select>
                 </label> */}
                 <input
-                    className="search--input-field"
+                    className="search__input-field"
                     name="searchPhrase"
                     value={searchWord}
                     onChange={e => setSearchWord(e.target.value)}
@@ -90,30 +90,31 @@ const SearchEngine = props => {
                     placeholder="Wpisz tytuł książki..."
                     autoComplete="off"
                 />
-                <button type="submit" className="search--btn btn">Wyszukaj Książkę</button>
+                <button type="submit" className="search__btn btn">Wyszukaj Książkę</button>
                 {error && <p className="error-message"> {
                     (error.message === "Cannot convert undefined or null to object") ? "Sorry, nic nie znaleziono" : error.message
                 } </p>}
                 </div>
             </form>
             </div>
-            <div className="display--container">
+            <div className="display__container">
             {loading && <div className="loading-msg">Ładujemy dane...</div>}
-                <ul className="display--list">
-                    <h2 className="display--header">Znalezione tytuły:</h2>
+                <ul className="display__list">
+                    <h2 className="display__header">Znalezione tytuły:</h2>
                     {bookList.map(book => (
-                        <li key={book.book_id} className="display-list--item">
-                            <Link to={`${ROUTES.MAIN}/${book.book_id}`} className="display-item--link">
-                                <div className="display-item--content">
-                                    <span className="display-content--title content">{book.title}</span>
-                                    <span className="display-content--author content">  Autorstwa: {book.author} </span>
-                                    <span className="display-content--publisher content">Wydana: { book.publisher} </span>
+                        <li key={book.book_id} className="display-list__item">
+                            <Link to={`${ROUTES.MAIN}/${book.book_id}`} className="display-item__link">
+                                <div className="display-item__content">
+                                    <span className="display-content__title content">{book.title}</span>
+                                    <span className="display-content__author content">  Autorstwa: {book.author} </span>
+                                    <span className="display-content__publisher content">Wydana: { book.publisher} </span>
                                 </div>
                             </Link>
                         </li>
                     ))}
                 </ul>
             </div>
+            <div className="s-n-d__footer"></div>
         </section>
     )
 }               

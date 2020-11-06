@@ -21,24 +21,24 @@ const LogInPage = () => (
                 
             </div>
             <div className="page-name">
-            <span className="page-name--wolbib">WOLNA BIBLIOTEKA</span>
-            <span className="page-name--czytelnia">CZYTELNIA</span>
+            <span className="page-name__wolbib">WOLNA BIBLIOTEKA</span>
+            <span className="page-name__czytelnia">CZYTELNIA</span>
             </div>
         </section>
         <section className="bussines_section container">
-        <div className='log-in--panel'>
+        <div className='log-in__panel'>
             <LogInForm/>
             <PassForgetLink/>
         </div>
-            <div className='sign-up--panel'>
-                <p className='sign-up--text'>Nie masz konta?</p>
+            <div className='sign-up__panel'>
+                <p className='sign-up__text'>Nie masz konta?</p>
                 <SignInWithGoogle/>
-                <p className='sign-up--text'>lub</p>
+                <p className='sign-up__text'>lub</p>
                 <SignUpLink/>
              </div>
         </section>
         <div className="footer">
-            <div className="footer--logo"></div>
+            <div className="footer__logo"></div>
         </div>
     </div>
 );

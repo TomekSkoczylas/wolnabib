@@ -37,6 +37,16 @@
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
+    &:disabled {
+      background: repeating-linear-gradient(
+                45deg,
+                $color-grey,
+                $color-grey 10px,
+                $color-pink 10px,
+                $color-pink 20px
+              );
+    }
+    filter: brightness(80%);
 }
 
 

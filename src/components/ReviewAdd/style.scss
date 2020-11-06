@@ -49,15 +49,12 @@
 }
 
 .rev-add__btn {
-    background-color: $color-pink;
+    background-color: $color-pink !important; 
     font-size: 18px;
-    color: $color-grey !important;
+    // color: $color-grey !important;
     padding: 5px 10px;
     box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.75);
     &:hover {
         filter: brightness(130%);
-    }
-    &:disabled {
-        filter: brightness(70%);
     }
 }
