@@ -24,13 +24,13 @@ const Navigation = () => {
 
 const NavAuth = ({authUser}) => {
     return (
-        <div className="nav--container">
-            <ul className="nav--link-list">
+        <div className="nav__container">
+            <ul className="nav__link-list">
                 <LogOutButton/>
-                <Link to={ROUTES.MAIN} className="nav--link-main"><ImBooks className="nav--icon"/></Link>
-                <Link to={ROUTES.ACCOUNT}className="nav--link-acc"><FaRegIdCard className="nav--icon"/></Link>
+                <Link to={ROUTES.MAIN} className="nav__link-main"><ImBooks className="nav__icon"/></Link>
+                <Link to={ROUTES.ACCOUNT}className="nav__link-acc"><FaRegIdCard className="nav__icon"/></Link>
             </ul>
-            <span className="nav--text">Witaj, {authUser.username}</span>
+            <span className="nav__text">Witaj, {authUser.username}</span>
         </div>
     )
 } 
@@ -39,12 +39,12 @@ const NavAuth = ({authUser}) => {
 
 const NavNonAuth = () => {
     return (
-        <div className="nav--container">
-            <ul className="nav--link-list">
-                <Link to={ROUTES.LOGIN} className="nav--link-in"><RiLoginBoxLine className="nav--icon in"/></Link>
-                <Link to={ROUTES.SIGNUP} className="nav--link-up"><RiDraftLine className="nav--icon up"/></Link>
+        <div className="nav__container">
+            <ul className="nav__link-list">
+                <Link to={ROUTES.LOGIN} className="nav__link-in"><RiLoginBoxLine className="nav__icon in"/></Link>
+                <Link to={ROUTES.SIGNUP} className="nav__link-up"><RiDraftLine className="nav__icon up"/></Link>
             </ul>
-            <span className="nav--text">Witaj, nieznajoma</span>
+            <span className="nav__text">Witaj, nieznajoma</span>
         </div>
     )
 }

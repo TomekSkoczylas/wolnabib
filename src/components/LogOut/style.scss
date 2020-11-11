@@ -3,8 +3,9 @@
 .logout--btn {
     background-color: transparent;
     border: none;
-    margin: 0 20px;
+    margin: 0 7px;
     @include tablet {
+        margin: 0 20px;
         &::after {
             font-family: $ubuntu;
             color: white;

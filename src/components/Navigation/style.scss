@@ -1,25 +1,31 @@
 @import "../../styles/globalStyles.scss";
 
 
-.nav--container {
+.nav__container {
     display: flex;
     justify-content: space-between;
     background-color: $color-grey;
     padding: 20px 0 15px 0;
 }
 
-.nav--text {
-    margin: auto 6%;
+.nav__text {
+    margin: auto 2%;
     color: white;
-    font-size: 18px;
+    font-size: 15px;
+    @include tablet {
+        margin: auto 6%;
+    }
 }
 
-.nav--link-list {
-    margin-left: 20px;
+.nav__link-list {
+    margin-left: 7px;
+    @include tablet {
+        margin-left: 20px;
+    }
 }
 
 
-a.nav--link-in {
+a.nav__link-in {
     @include tablet {
         &::after {
             color: white;
@@ -31,7 +37,7 @@ a.nav--link-in {
     }
 }
 
-a.nav--link-up {
+a.nav__link-up {
     @include tablet {
         &::after {
             color: white;
@@ -43,7 +49,7 @@ a.nav--link-up {
     }
 }
 
-a.nav--link-main {
+a.nav__link-main {
     @include tablet {
         &::after {
             color: white;
@@ -57,7 +63,7 @@ a.nav--link-main {
 }
 
 
-a.nav--link-acc {
+a.nav__link-acc {
     @include tablet {
         &::after {
             color: white;
@@ -69,10 +75,13 @@ a.nav--link-acc {
     }
 }
 
-svg.nav--icon {
+svg.nav__icon {
     color: $color-pink;
     font-size: 32px;
-    margin: 0 20px;
+    margin: 0 7px;
+    @include tablet {
+        margin: 0 20px;
+    }
 }
 
 
