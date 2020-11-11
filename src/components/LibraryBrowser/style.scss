@@ -10,6 +10,10 @@
     align-items: center;
 }
 
+.nav-btn__container {
+    display: flex;
+}
+
 .nav-btn {
     color: white;
     font-size: 20px;
@@ -18,7 +22,19 @@
 
 .nav-icon {
     color: white;
+    position: relative;
+    top: 3px;
 }
+
+.nav-icon__double {
+    color: white;
+    font-size: 23px;
+    position: relative;
+    top: 2px;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
 
 .browser__list {
     padding: 30px 0;
@@ -47,7 +63,7 @@
     margin: 7px auto;
     padding: 10px;
     background-color: $pink-transparent;
-    border-radius: 5px;
+    border-radius: 0px 10px 10px 10px;
     @include tablet {
         margin: 10px auto;
     }
@@ -91,5 +107,13 @@ span.browser-content__title {
     }
     @include notebook {
         font-size: 28px;
+    }
+}
+
+.browser-content__number {
+    font-size: 15px;
+    margin: -5px 0 10px -10px;
+    @include tablet {
+        margin: -5px 0 10px -20px;
     }
 }

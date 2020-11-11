@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import './style.scss';
 import { GoTriangleRight, GoTriangleLeft } from "react-icons/go";
+import { ImForward3, ImBackward2 } from "react-icons/im";
 
 const LibraryBrowser = props => {
     const [list, setList] = useState([]);
@@ -47,6 +48,17 @@ const LibraryBrowser = props => {
         setValue(prevState => (prevState +10));
     }
     
+    const onFastForward =()=> {
+        let n = value +50;
+        let s = '';
+        if (n < 126) {
+            s = n.toString().padStart(4, '0');
+        } else {
+            s = n.toString();
+        }
+        fetchBooks(s);
+        setValue(prevState => (prevState +50));
+    }
 
     const onBackward =()=> {
         let s = ''
@@ -61,6 +73,23 @@ const LibraryBrowser = props => {
                 s = n.toString();
             }
             setValue(prevState => ( prevState -10))
+        }
+        fetchBooks(s);
+    }
+
+    const onFastBackward =()=> {
+        let s = ''
+        if (value < 51) {
+            s = "0002";
+            setValue(2);
+        } else {
+            const n = value - 50;
+            if (n < 126) {
+                s = n.toString().padStart(4, '0')
+            } else {
+                s = n.toString();
+            }
+            setValue(prevState => ( prevState -50))
         }
         fetchBooks(s);
     }
@@ -94,9 +123,16 @@ const LibraryBrowser = props => {
     return (
         <div className="library-browser">
             <div className="browser__nav">
-                <div onClick={onBackward} className="nav-btn"> <GoTriangleLeft className="nav-icon"/> Wstecz</div>
+                <div className="nav-btn__container">
+                    <ImBackward2 onClick={onFastBackward} className="nav-icon__double"/>
+                    <div onClick={onBackward} className="nav-btn"> <GoTriangleLeft className="nav-icon"/> Wstecz</div>
+                </div>
                 <div className="browser__header" >Przeglądaj nasz katalog</div>
-                <div onClick={onForward} className="nav-btn">Dalej <GoTriangleRight className="nav-icon"/> </div>
+                <div className="nav-btn__container">
+                    <div onClick={onForward} className="nav-btn">Dalej <GoTriangleRight className="nav-icon"/> </div>
+                    <ImForward3 onClick={onFastForward} className="nav-icon__double"/>
+                </div>
+                
             </div>
             {loading && <div className="loading-msg">Ładujemy dane...</div>}
             <ul className="browser__list">
@@ -104,9 +140,10 @@ const LibraryBrowser = props => {
                     <li key={book.book_id} className="browser-list__item">
                         <Link to={`${ROUTES.MAIN}/${book.book_id}`} className="browser-item__link">
                             <div className="browser-item__content">
+                                <span className="browser-content__number">{parseInt(book.callnumber.toString().slice(0,4))}</span>
                                 <span className="browser-content__title content">{book.title}</span>
                                 <span className="browser-content__author content">  Autorstwa: {book.author} </span>
-                                <span className="browser-content__publisher content">Wydana: { book.callnumber} </span>
+                                <span className="browser-content__publisher content">Wydana: { book.publisher} </span>
                             </div>
                         </Link>
                     </li>
