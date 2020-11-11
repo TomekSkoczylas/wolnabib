@@ -6,7 +6,6 @@ import * as ROUTES from '../../constants/routes';
 import './style.scss';
 import { GoTriangleRight, GoTriangleLeft } from "react-icons/go";
 
-
 const LibraryBrowser = props => {
     const [list, setList] = useState([]);
     const [value, setValue] = useState(2);
@@ -34,8 +33,7 @@ const LibraryBrowser = props => {
             .catch(error => {
                 setError(error);
             })
-}
-
+    }
 
     const onForward =()=> {
         let n = value +10;
@@ -68,8 +66,27 @@ const LibraryBrowser = props => {
     }
 
     useEffect(()=> {
-        fetchBooks(2);                     
-    },[])
+        setLoading(true);
+        // console.log(n);
+        props.firebase
+            .books()
+            .orderByChild("callnumber")
+            .startAt(2)
+            .limitToFirst(10)
+            .once("value")
+            .then(snap => {
+                const snapObject = snap.val()
+                const snapList = Object.keys(snapObject).map(key => ({
+                        ...snapObject[key],
+                        book_id: key,
+                    }))
+                setList(snapList);
+                setLoading(false);        
+            })
+            .catch(error => {
+                setError(error);
+            })     
+    },[props.firebase])
 
    
 
