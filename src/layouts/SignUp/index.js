@@ -7,6 +7,7 @@ import { withFirebase } from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
 import './style.scss';
 import img from '../../images/zauszkonto.jpg'
+import * as ROLES from '../../constants/roles';
 
 
 const INITIAL_STATE = {
@@ -42,6 +43,9 @@ const SingUpFormBase = (props) => {
     } = signee;
 
     let onSubmit = event => {
+        const roles = {};
+        roles[ROLES.USER] = ROLES.USER;
+
         props.firebase
             .doCreateUserWithEmailAndPassword(email,  passwordOne)
             .then(authUser => {
@@ -50,7 +54,7 @@ const SingUpFormBase = (props) => {
                     .set({
                         username,
                         email,
-                        roles: {},
+                        roles,
                     });
             } )
             .then(()=> {
