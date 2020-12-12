@@ -41,7 +41,8 @@ const NavNonAuth = () => {
     return (
         <div className="nav__container">
             <ul className="nav__link-list">
-                <Link to={ROUTES.LOGIN} className="nav__link-in"><RiLoginBoxLine className="nav__icon in"/></Link>
+                {/* <Link to={ROUTES.LOGIN} className="nav__link-in"><RiLoginBoxLine className="nav__icon in"/></Link> */}
+                <a href='/#login' className="nav__link-in"><RiLoginBoxLine className="nav__icon in"/></a>
                 <Link to={ROUTES.SIGNUP} className="nav__link-up"><RiDraftLine className="nav__icon up"/></Link>
             </ul>
             <span className="nav__text">Witaj, nieznajoma</span>

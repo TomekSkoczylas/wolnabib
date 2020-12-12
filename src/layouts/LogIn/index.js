@@ -20,7 +20,7 @@ const LogInPage = () => (
                 </div>
                 
             </div>
-            <div className="page-name">
+            <div className="page-name" id="login">
             <span className="page-name__wolbib">WOLNA BIBLIOTEKA</span>
             <span className="page-name__czytelnia">CZYTELNIA</span>
             </div>
@@ -38,7 +38,7 @@ const LogInPage = () => (
              </div>
         </section>
         <div className="footer">
-            <div className="footer__logo"></div>
+            {/* <div className="footer__logo"></div> */}
         </div>
     </div>
 );
