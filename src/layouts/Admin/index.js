@@ -1,22 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { compose } from 'recompose';
 
 import { withFirebase } from "../../functions/Firebase";
 import  { withAuthorization } from '../../functions/Session';
-// import * as ROLES from '../../constants/roles';
+import * as ROLES from '../../constants/roles';
 
 
 
-const Admin = () => {
+const Admin = (props) => {
+    const [archList, setArchList] = useState([]);
+
+    useEffect(()=>{
+        props.firebase
+            .archive()
+            .limitToFirst(20) 
+            .on("value", snapshot => {
+                const archObject = snapshot.val();
+
+                const snapList = Object.keys(archObject).map(key => ({
+                    ...archObject[key],
+                    itemID: key, 
+                }));
+
+                setArchList(snapList);
+            })
+
+        return()=> {
+            props.firebase.archive().off();
+        }    
+    })
+
+
+
     return (
         <div>
-            <div>Admin Site</div>
+            <ul>
+                {archList.map(item => (
+                    <li key={item.itemID}>
+                    <ArchItem item={item}/>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
 
+const ArchItemBase = props => {
+    const [book, setBook] = useState([]);
 
-const condition = authUser => authUser && !!authUser.roles["ADMIN"]
+    const {author, text} = props.item;
+
+    useEffect(()=> {
+        props.firebase
+            .book(props.item.bookID)
+            .on("value", snap => {
+                setBook({...snap.val()})
+                console.log(snap.val());
+            })
+           
+   
+    }, [props.firebase, props.item.bookID])
+
+
+    return (
+        <>
+            <span>Użytkownik: {author}</span>
+            <span>Książka: {book.title}</span>
+            <span>Treść recenzji: {text}</span>
+        </>
+
+    )
+}
+
+const ArchItem = withFirebase(ArchItemBase);
+
+const condition = authUser => authUser && !!authUser.roles[ROLES.ADMIN]
 
 
 export default compose(

@@ -75,6 +75,17 @@ a.nav__link-acc {
     }
 }
 
+a.nav__link-admin {
+    margin-left: 20px;
+    &::after {
+        color: white;
+        content: "Panel administratora";
+        font-size: 18px;
+        position: relative;
+        bottom: 30%;
+    }
+}
+
 svg.nav__icon {
     color: $color-pink;
     font-size: 32px;

@@ -2,6 +2,7 @@
 
 .logout--btn {
     background-color: transparent;
+    cursor: pointer;
     border: none;
     margin: 0 7px;
     @include tablet {
