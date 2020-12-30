@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import { withFirebase } from "../../functions/Firebase";
 
-
+import { FaRegTrashAlt } from "react-icons/fa";
 
 
 const ArchiveView = (props) => {
@@ -29,14 +29,12 @@ const ArchiveView = (props) => {
         }    
     })
 
-
-
     return (
         <div>
             <ul>
                 {archList.map(item => (
                     <li key={item.itemID}>
-                    <ArchItem item={item}/>
+                        <ArchItem item={item}/>
                     </li>
                 ))}
             </ul>
@@ -47,25 +45,37 @@ const ArchiveView = (props) => {
 const ArchItemBase = props => {
     const [book, setBook] = useState([]);
 
-    const {author, text} = props.item;
+    const {author, date, bookID, text, userID } = props.item;
+
+    const newDate = new Date(date); 
 
     useEffect(()=> {
         props.firebase
-            .book(props.item.bookID)
+            .book(bookID)
             .on("value", snap => {
                 setBook({...snap.val()})
-                console.log(snap.val());
+                // console.log(snap.val());
             })
            
    
-    }, [props.firebase, props.item.bookID])
+    }, [props.firebase, bookID])
+
+    const onDelete = () => {
+        console.log("usuwamy")
+        props.firebase.book(bookID + '/reviews/' + userID)
+        .remove()
+    } 
 
 
     return (
         <>
             <span>Użytkownik: {author}</span>
             <span>Książka: {book.title}</span>
+            <span>Data {newDate.toISOString()}</span>
             <span>Treść recenzji: {text}</span>
+            <button onClick={onDelete}>Usuń
+                <FaRegTrashAlt className="delete-icon"/>
+            </button>
         </>
 
     )

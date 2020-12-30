@@ -6,7 +6,7 @@ import  { withAuthorization } from '../../functions/Session';
 import * as ROLES from '../../constants/roles';
 
 import ArchiveView from "../../components/ArchiveView"; 
-
+import UsersView from "../../components/UsersView";
 
 
 const Admin = (props) => {
@@ -14,6 +14,7 @@ const Admin = (props) => {
     return (
         <div>
             <ArchiveView/>
+            <UsersView/>
         </div>
     )
 }
