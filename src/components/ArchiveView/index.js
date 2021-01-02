@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { withFirebase } from "../../functions/Firebase";
 
 import './style.scss';
-import { FaRegTrashAlt } from "react-icons/fa";
 
 
 const ArchiveView = (props) => {

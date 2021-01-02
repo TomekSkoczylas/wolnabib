@@ -24,11 +24,13 @@
     line-height: 20px;
 
     &--btn {
+        cursor: crosshair;
         color: $color-grey;
         background-color: $color-pink;
         border-radius: 5px;
         border: none;
         padding: 3px 5px;
         margin: 5px 0 5px 38%;
+        
     }
 }
