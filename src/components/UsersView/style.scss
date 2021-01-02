@@ -1,0 +1,28 @@
+@import "../../styles/globalStyles.scss";
+
+.users {
+    width: 45%;
+    color: white;
+
+    &--title {
+        font-size: 16px;
+        font-weight: 500;
+        margin: 5px 0;
+    }
+
+
+    &--list {
+        margin-top: 5px;
+    }
+
+    &--item {
+        margin: 5px 0;
+        background-color: $pink-more-transparent;
+        padding: 3px;
+        color: white;
+        font-size: 16px;
+        font-weight: 200;
+        line-height: 20px;
+    }
+    
+}

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { withFirebase } from '../../functions/Firebase';
 
+import './style.scss';
+
 const UsersView = props => {
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -27,14 +29,15 @@ const UsersView = props => {
     }, [props.firebase])
 
     return (
-        <div>
+        <div className="users">
+            <span className="users--title">Lista użytkowników</span>
             {isLoading && <div>Loading...</div>}
 
-            <ul>
+            <ul className="users--list">
                 {users.map(user => (
-                    <li key={user.uid}>
-                        <span>Imię użytkownika: {user.username}</span>
-                        <span>Mail użytkownika: {user.email}</span>
+                    <li className="users--item" key={user.uid}>
+                        <span className="users--content">Imię użytkownika: {user.username}</span><br/>
+                        <span className="users--content">Mail użytkownika: {user.email}</span>
                     </li>    
                 ))}
             </ul>

@@ -1,0 +1,33 @@
+@import "../../styles/globalStyles.scss";
+
+.passChange {
+    margin: 60px;
+
+    &--title {
+        margin: 20px auto;
+        font-size: 26px;
+        font-weight: 600;
+    }
+
+    &--form {
+        width: 350px;
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    &--btn {
+        background-color: $color-grey;
+        font-size: 18px;
+        padding: 10px 0;
+        width: 250px;
+        box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.75);
+        &:hover {
+            filter: brightness(130%);
+        }
+        @include mobile {
+            width: 180px;
+            font-size: 18px;
+        }
+    }
+}

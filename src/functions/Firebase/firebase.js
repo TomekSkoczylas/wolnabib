@@ -56,6 +56,7 @@ class Firebase {
     // *** Activity API ***
 
     archive = () => this.db.ref('archive');
+    archiveItem = itemID => this.db.ref(`archive/${itemID}`);
 
     // *** Merge Auth and DB User API *** //
 

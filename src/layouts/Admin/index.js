@@ -8,13 +8,17 @@ import * as ROLES from '../../constants/roles';
 import ArchiveView from "../../components/ArchiveView"; 
 import UsersView from "../../components/UsersView";
 
+import './style.scss';
 
 const Admin = (props) => {
 
     return (
-        <div>
-            <ArchiveView/>
-            <UsersView/>
+        <div className="admin">
+            <span className="admin--title">Panel Administratora</span>
+            <div className="admin--container">
+                <ArchiveView/>
+                <UsersView/>
+            </div>
         </div>
     )
 }

@@ -2,6 +2,8 @@ import React, {useState} from "react";
 
 import { withFirebase } from "../../functions/Firebase";
 
+import './style.scss';
+
 const INITIAL_STATE = {
     passwordOne: '',
     passwordTwo: '',
@@ -47,10 +49,11 @@ const PassChangeForm = (props) => {
     const isInvalid = passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-        <div>
-        <h3>Zmiana hasła</h3>
-        <form onSubmit={onSubmit}>
+        <div className="passChange">
+        <h3 className="passChange--title">Zmiana hasła</h3>
+        <form className="passChange--form" onSubmit={onSubmit}>
             <input
+                className="passChange--input input_field"
                 name="passwordOne"
                 value={passwordOne}
                 onChange={onChange}
@@ -58,13 +61,14 @@ const PassChangeForm = (props) => {
                 placeholder="Nowe hasło"
             />
             <input
+                className="passChange--input input_field"
                 name="passwordTwo"
                 value={passwordTwo}
                 onChange={onChange}
                 type="password"
-                placeholder="Potwierdź nowe hasło"
+                placeholder="Potwierdź hasło"
             />
-            <button disabled={isInvalid} type="submit">
+            <button className="passChange--btn btn"disabled={isInvalid} type="submit">
                 Zmień moje hasło
             </button>
             {error && <p>{error.message}</p>}
