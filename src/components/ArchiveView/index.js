@@ -57,7 +57,10 @@ const ArchItemBase = props => {
                 setBook({...snap.val()})
                 // console.log(snap.val());
             })
-           
+        
+        return()=> {
+            props.firebase.book(bookID).off();
+        }       
    
     }, [props.firebase, bookID])
 
