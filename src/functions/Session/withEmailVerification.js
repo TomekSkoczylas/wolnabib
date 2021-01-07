@@ -48,6 +48,7 @@ const withEmailVerification = Component => {
                                 <button
                                     type="button"
                                     onClick={this.onSendEmailVerification}
+                                    disabled={this.state.isSent}
                                 >
                                     Wyślij mail weryfikujący.    
                                 </button>

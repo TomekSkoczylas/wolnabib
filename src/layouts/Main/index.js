@@ -1,7 +1,9 @@
 import React from "react";
 import { Switch, Route } from 'react-router-dom';
+import { compose } from "recompose";
 
-import { withAuthorization } from '../../functions/Session';
+
+import { withAuthorization, withEmailVerification } from '../../functions/Session';
 import * as ROUTES from '../../constants/routes';
 
 import SearchEngine from "../../components/SearchEngine";
@@ -22,4 +24,7 @@ const MainPage = () => {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(MainPage);
+export default compose(
+    withEmailVerification,
+    withAuthorization(condition)
+)(MainPage);
