@@ -2,6 +2,9 @@ import React from 'react';
 
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
+import './style.scss';
+
+
 
 const needEmailVerification = authUser => 
     authUser && 
@@ -29,29 +32,32 @@ const withEmailVerification = Component => {
                 <AuthUserContext.Consumer>
                     {authUser => 
                         needEmailVerification(authUser) ? (
-                            <div>
+                            <div className="verification">
+                                <div className="verification__container">
                                 {this.state.isSent ? (
-                                    <p>
-                                        Mail weryfikacyjny został wysłany. Sprawdź swoją skrzynkę pocztową
+                                    <p className="verification__message isSent">
+                                        <strong> Mail weryfikacyjny został wysłany. </strong> <br/> Sprawdź swoją skrzynkę pocztową
                                         (zajrzyj także do folderów ze spamem). Powinna zawierać mail weryfikujący.
                                         Odświerz tę stronę po tym jak zweryfikował się już swój adres mail. 
                              
                                     </p>
                                 ) : (
-                                    <p>
-                                    Zweryfikuj swój adres email. Sprawdź czy Twoja skrzynka pocztowa 
-                                    (zajrzyj także do folderów ze spamem) zawiera mail weryfikujący. 
-                                    Jeśli nie, wyślij kolejny mail weryfikujący.  
+                                    <p className="verification__message isNotSent">
+                                    <strong> Zweryfikuj swój adres email. </strong> <br/> Sprawdź czy Twoja skrzynka pocztowa 
+                                    zawiera mail weryfikujący (zajrzyj także do folderów ze spamem). 
+                                    Jeżeli nie, wyślij kolejny mail weryfikujący.  
                                 </p>    
                                 )}
                                 
                                 <button
+                                    className="verification__btn btn"
                                     type="button"
                                     onClick={this.onSendEmailVerification}
                                     disabled={this.state.isSent}
                                 >
                                     Wyślij mail weryfikujący.    
                                 </button>
+                                </div>
                             </div>
                         ) : (
                             <Component {...this.props} />
