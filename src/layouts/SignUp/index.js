@@ -58,6 +58,9 @@ const SingUpFormBase = (props) => {
                     });
             } )
             .then(()=> {
+                return props.firebase.doSendEmailVerification();    
+            })  
+            .then(()=> {
                 setSignee({...INITIAL_STATE});
                 props.history.push(ROUTES.MAIN);
             })
