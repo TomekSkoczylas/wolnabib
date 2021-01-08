@@ -55,7 +55,7 @@ const withEmailVerification = Component => {
                                     onClick={this.onSendEmailVerification}
                                     disabled={this.state.isSent}
                                 >
-                                    Wyślij mail weryfikujący.    
+                                    Ponownie wyślij <br/> mail weryfikacyjny.    
                                 </button>
                                 </div>
                             </div>

@@ -1,6 +1,12 @@
 import React from "react";
+import { compose } from 'recompose'; 
+
 import PassChangeForm from "../../components/PassChange";
-import {AuthUserContext, withAuthorization} from '../../functions/Session';
+import {
+    AuthUserContext, 
+    withAuthorization,
+    withEmailVerification,    
+} from '../../functions/Session';
 import './style.scss';
 
 
@@ -22,4 +28,7 @@ const AccountPage = () => (
 
 const condition = authUser => !!authUser;
 
-export default   withAuthorization(condition)(AccountPage);
+export default compose(
+    withEmailVerification,
+    withAuthorization(condition),    
+)(AccountPage);
