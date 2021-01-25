@@ -21,6 +21,8 @@ npm run build
 
 ## Uruchamianie lokalne aplikacji w wersji deweloperskiej
 
+![Build on each commit to check if application still builds](https://github.com/TomekSkoczylas/wolnabib/workflows/Build%20on%20each%20commit%20to%20check%20if%20application%20still%20builds/badge.svg)
+
 ```bash
 npm install
 npm run start
