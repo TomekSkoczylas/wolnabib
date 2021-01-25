@@ -2,7 +2,7 @@ name: Build on each commit to check if application still builds
 on:
     push:
         branches:
-            - main
+            - master
 
 jobs:
     build:
