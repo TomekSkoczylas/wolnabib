@@ -23,7 +23,7 @@ npm run build
 
 ```bash
 npm install
-npm run dev
+npm run start
 ```
 
 ## Deployment na środowisko produkcyjne - czytelnia.wolnabiblioteka.pl
