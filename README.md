@@ -19,6 +19,8 @@ npm run build
 
 ## Deployment na środowisko produkcyjne - czytelnia.wolnabiblioteka.pl
 
+![Build and release a package](https://github.com/TomekSkoczylas/wolnabib/workflows/Build%20and%20release%20a%20package/badge.svg)
+
 1. Utwórz merge request z brancza głównego `master` do `release`
 2. Zatwierdź merge request
 
