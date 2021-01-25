@@ -15,6 +15,15 @@ npm install
 cp .env-example .env
 edit .env # uzupełnij wartości
 npm run build
+
+# w katalogu build pojawią się statyczne pliki do uploadu na serwer
+```
+
+## Uruchamianie lokalne aplikacji w wersji deweloperskiej
+
+```bash
+npm install
+npm run dev
 ```
 
 ## Deployment na środowisko produkcyjne - czytelnia.wolnabiblioteka.pl
