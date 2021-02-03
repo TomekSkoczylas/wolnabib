@@ -15,7 +15,7 @@ import "./style.scss";
 
 const App = () => (
         <Router>
-            <div className="app container">
+            <div className="app">
                 <Navigation/>
                 <Route exact path={ROUTES.LOGIN} component={LogInPage}/>
                 <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
