@@ -1,0 +1,27 @@
+name: Build on each commit to check if application still builds
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build:
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: '15'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Copy .env from secrets
+              run: "echo ${WOLNABIBLIOTEKA_ENV_FILE} > .env"
+              env:
+                  WOLNABIBLIOTEKA_ENV_FILE: "${{ secrets.WOLNABIBLIOTEKA_ENV_FILE }}"
+
+            - name: Build production version
+              run: npm run build
