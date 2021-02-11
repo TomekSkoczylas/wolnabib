@@ -19,6 +19,7 @@
 .rev-item {
     background-color: $lighter-grey;
     border-radius: 5px;
+    margin: 2px 0;
 }
 
 .rev-item__head {
@@ -61,6 +62,7 @@
 .rev-item__text {
     padding: 10px 20px;
     font-size: 3.5vw;
+    line-height: 3.5vw;
     @include tablet {
         font-size: 22px;
     }
