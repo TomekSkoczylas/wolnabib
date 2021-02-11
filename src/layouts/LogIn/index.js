@@ -37,9 +37,9 @@ const LogInPage = () => (
                 <SignUpLink/>
              </div>
         </section>
-        <div className="footer">
-            {/* <div className="footer__logo"></div> */}
-        </div>
+        <section className="recRev">
+
+        </section>
     </div>
 );
 
