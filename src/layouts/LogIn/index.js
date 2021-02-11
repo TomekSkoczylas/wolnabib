@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { withRouter } from 'react-router-dom';
-import { SignUpLink } from '../SignUp';
+
 import { compose } from 'recompose';
 import {withFirebase} from "../../functions/Firebase";
 import * as ROUTES from '../../constants/routes';
 import SignInWithGoogle from "../../components/GoogleLogIn";
+import RecentReviews from "../../components/RecentReviews";
+import { SignUpLink } from '../SignUp';
 import {PassForgetLink} from "../PassForget";
+
 import './style.scss';
 
 const LogInPage = () => (
@@ -37,8 +40,8 @@ const LogInPage = () => (
                 <SignUpLink/>
              </div>
         </section>
-        <section className="recRev">
-
+        <section className="recRev__section">
+            <RecentReviews/>
         </section>
     </div>
 );
