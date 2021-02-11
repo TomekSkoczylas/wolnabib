@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { withFirebase } from "../../functions/Firebase";
+import StarRatingComponent from 'react-star-rating-controlled-component';
 
 import './style.scss';
 
@@ -8,7 +9,7 @@ const RecentReviews = (props) => {
     const [recRev, setRecRev] = useState([]);
     const [loading, setLoading] = useState(false);
 
-
+    
     useEffect(()=> {
         setLoading(true);
         props.firebase
@@ -20,8 +21,10 @@ const RecentReviews = (props) => {
                        ...archObj[key],
                        itemID: key,
                 }));
-                setRecRev(snapList);
+                console.log(snapList);
+                setRecRev(snapList.reverse());
                 setLoading(false);
+
             })
 
         return()=> {
@@ -31,14 +34,15 @@ const RecentReviews = (props) => {
 
     return (
         <div className="recRev">
-            <span className="recRev--itle">Ostatnio dodane recenzje</span>
+            <span className="recRev--title">Najnowsze recenzje</span>
+            {loading ? <span>Loading...</span> :
             <ul className="recRev--list">
-                {recRev.reverse().map( item => (
+                {recRev.map( item => (
                     <li className="recRev--list-item" key={item.itemID}>
                            <RecRevItem item={item}/> 
                     </li>
                 ))}
-            </ul>
+            </ul>}
         </div>
 
     )
@@ -47,7 +51,7 @@ const RecentReviews = (props) => {
 const RecRevItemBase = props => {
     const [book, setBook] = useState([]);
 
-    const {author, date, bookID, text } = props.item;
+    const {author, date, bookID, text, rating } = props.item;
 
     const newDate = new Date(date);
 
@@ -64,10 +68,26 @@ const RecRevItemBase = props => {
 
     return (
         <div className="recRevItem">
-            <span className="recRevItem--author">{author}</span>
-            <span className="recRevItem--date">{newDate.toGMTString()}</span>
+            <div className="recRevItem--header">
             <span className="recRevItem--book">{book.title}</span>
+            <div className="recRevItem--rating">
+                <div className="recRevItem--stars">
+                    <StarRatingComponent
+                        name="rating"
+                        value={rating}
+                        starCount={6}
+                        editing={false}
+                        starColor={'#FA8072'}
+                        emptyStarColor={'#293039'}
+                    />
+                </div>
+            </div>
+            </div>
             <span className="recRevItem--text">{text}</span>
+            <div className="recRevItem--footer">
+                <span className="recRevItem--author">Autor/ka recenzji: {author}</span>
+                <span className="recRevItem--date">Dodana: {newDate.toGMTString().substring(4, 16)}</span>
+            </div>
         </div>
     )
 
