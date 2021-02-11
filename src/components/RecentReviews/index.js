@@ -14,7 +14,7 @@ const RecentReviews = (props) => {
         setLoading(true);
         props.firebase
             .archive()
-            .limitToFirst(10)
+            .limitToLast(10)
             .on("value", snap => {
                 const archObj = snap.val();
                 const snapList = Object.keys(archObj).map(key => ({
