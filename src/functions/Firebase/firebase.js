@@ -43,7 +43,8 @@ class Firebase {
 
     doSendEmailVerification = () => 
         this.auth.currentUser.sendEmailVerification({
-            url: "http://czytelnia.wolnabiblioteka.pl/"
+            // url: "http://czytelnia.wolnabiblioteka.pl/"
+            url: "http://localhost:3000/"
         });
 
     // *** User API ***

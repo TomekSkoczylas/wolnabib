@@ -13,7 +13,7 @@ const ArchiveView = (props) => {
     useEffect(()=>{
         props.firebase
             .archive()
-            .limitToFirst(20) 
+            .limitToLast(20) 
             .on("value", snapshot => {
                 const archObject = snapshot.val();
 

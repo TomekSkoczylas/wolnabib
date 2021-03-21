@@ -12,7 +12,7 @@ import {PassForgetLink} from "../PassForget";
 import './style.scss';
 
 const LogInPage = () => (
-    <div className="login-page container">
+    <div className="login-page">
         <section className="intro-section">
             <div className="pic-container">
                 <div className="pic-logo"></div>

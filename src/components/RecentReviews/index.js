@@ -21,7 +21,7 @@ const RecentReviews = (props) => {
                        ...archObj[key],
                        itemID: key,
                 }));
-                console.log(snapList);
+                // console.log(snapList);
                 setRecRev(snapList.reverse());
                 setLoading(false);
 
