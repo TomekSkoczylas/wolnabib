@@ -9,11 +9,24 @@ import ArchiveView from "../../components/ArchiveView";
 import UsersView from "../../components/UsersView";
 
 import './style.scss';
+// import collection from "../Admin/collection/collection.json";
 
 const Admin = (props) => {
 
+    // // const onSub =()=> {
+    // //     const coll = collection;
+    // //     console.log(coll);
+    // //     coll.map(book => (
+    // //         props.firebase
+    // //         .books()
+    // //         .push(book)
+    // //         .then(console.log(book))
+    // //     ));
+    // }
+
     return (
         <div className="admin">
+            {/* <button onClick={onSub}>Ad Books</button> */}
             <span className="admin--title">Panel Administratora</span>
             <div className="admin--container">
                 <ArchiveView/>

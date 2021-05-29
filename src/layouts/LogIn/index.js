@@ -11,6 +11,7 @@ import {PassForgetLink} from "../PassForget";
 
 import './style.scss';
 
+
 const LogInPage = () => (
     <div className="login-page">
         <section className="intro-section">
@@ -63,6 +64,8 @@ const LogInFormBase = (props) => {
 
     const isInvalid = email === '' || password === '';
 
+   
+
     const onSubmit = event => {
         props.firebase
             .doSignInWithEmailAndPassword(email, password)
@@ -94,6 +97,7 @@ const LogInFormBase = (props) => {
     }
 
     return (
+        <div>
         <form onSubmit={onSubmit}>
             <div className="form-body">
             <input
@@ -117,6 +121,7 @@ const LogInFormBase = (props) => {
             { error && <p className="error-message">{error.message}</p>}
             </div>
         </form>
+        </div>
     )
 }
 
